@@ -63,6 +63,12 @@
 - **Banner Carousel Auto-Rotation**: Added smooth auto-cycling for desktop and mobile project banner carousels every 3500ms.
 - **Image Fallback Fix**: Replaced 16 broken `src="/projects/"` image paths with official company logo assets (`/projects/assets/images/logo-blue.png`).
 
+### Git Repository & GitHub Remote Hosting
+- **Repository Initialized**: Initialized a clean Git repository on branch `main` directly in [`dlc_website/`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website).
+- **GitHub Origin Configured**: Linked remote `origin` to [`https://github.com/suryanmandal/digitallabourchowk.git`](https://github.com/suryanmandal/digitallabourchowk.git).
+- **Codebase Pushed**: Successfully committed (1,372 files, 131,625 lines) and pushed all production source code, assets, documentation, and configuration files to GitHub `main` branch.
+- **Up to Date**: Working tree is 100% clean and fully synchronized with GitHub `origin/main`.
+
 ### Ready for Hosting (Archive Removed)
 - **Archive Cleaned**: Permanently deleted the 235 MB `_archive/` directory per user confirmation, leaving the repository completely clean, lightweight, and optimized for production deployment on platforms like Vercel, AWS Amplify, Docker, or VPS.
 - **Production Verification**: Production build (`npm run build`) passed in ~1.1s with 100% static page generation across all 14 routes.

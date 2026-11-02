@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,13 +7,179 @@
 :root {
   --background: #ffffff;
   --foreground: #090d16;
+  --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --e-global-typography-primary-font-family: 'Poppins', sans-serif !important;
+  --e-global-typography-secondary-font-family: 'Poppins', sans-serif !important;
+  --e-global-typography-text-font-family: 'Poppins', sans-serif !important;
+  --e-global-typography-accent-font-family: 'Poppins', sans-serif !important;
+  --theme-font-family: 'Poppins', sans-serif !important;
+}
+
+/* ========================================================
+   GLOBAL POFFINS FONT ACROSS ALL PAGES & ELEMENTS
+   ======================================================== */
+html,
+body,
+button,
+input,
+select,
+textarea,
+h1, h2, h3, h4, h5, h6,
+p, a, li, span, div,
+.elementor,
+.site-main,
+.entry-content,
+[class*="elementor-"] {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   overflow-x: hidden;
+}
+
+/* Preserve Icon Fonts from being overridden */
+i[class*="fa-"], [class*="fa-"], .fa, .fas, .far, .fab, .fa-solid {
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+}
+i[class*="eicon-"], .eicon, [class*="eicon"] {
+  font-family: "eicons" !important;
+}
+
+/* ========================================================
+   RESPONSIVE ELEMENTOR VISIBILITY GUARDS
+   ======================================================== */
+@media (min-width: 1025px) {
+  .elementor-hidden-desktop,
+  [class*="elementor-hidden-desktop"] {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .elementor-hidden-tablet,
+  [class*="elementor-hidden-tablet"] {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .elementor-hidden-mobile,
+  [class*="elementor-hidden-mobile"] {
+    display: none !important;
+  }
+}
+
+/* ========================================================
+   STAT METRICS & COUNTER DIGITS (Our Impact & All Stat Sections)
+   ======================================================== */
+.elementor-counter {
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.elementor-counter-number-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(44px, 4.2vw, 64px) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -1.5px !important;
+  color: #0C59D4 !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+.elementor-counter-number {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: inherit !important;
+  font-weight: 800 !important;
+  color: inherit !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+.elementor-counter-number-suffix,
+.elementor-counter-number-prefix {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.9em !important;
+  font-weight: 800 !important;
+  color: inherit !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  margin-left: 2px !important;
+}
+
+.elementor-counter-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  color: #1e293b !important;
+  margin-top: 12px !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  justify-content: center !important;
+  display: flex !important;
+}
+
+/* Desktop 4-column Impact Grid Polish */
+.elementor-element-3d0a2f97 {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  margin-top: 40px !important;
+}
+
+.elementor-element-3d0a2f97 > div {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 12px 6px !important;
+}
+
+/* About Us Stats Highlight Banner (3 Lakhs+, 15,000+, 850+, 200+) */
+.elementor-element-29f1ef19 .elementor-heading-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(38px, 4.5vw, 56px) !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.1 !important;
+  letter-spacing: -1px !important;
+  text-align: center !important;
+  margin-bottom: 8px !important;
+}
+
+.elementor-element-29f1ef19 p,
+.elementor-element-29f1ef19 p span {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+
+/* Mobile specific counter & digit sizing */
+@media (max-width: 767px) {
+  .elementor-counter-number-wrapper {
+    font-size: 42px !important;
+    letter-spacing: -1px !important;
+  }
+  .elementor-counter-title {
+    font-size: 13px !important;
+    margin-top: 6px !important;
+    letter-spacing: 1px !important;
+  }
 }
 
 /* Custom scrollbar */

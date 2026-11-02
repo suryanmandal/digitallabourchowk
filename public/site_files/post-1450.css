@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.elementor-kit-1450 { --e-global-color-primary: #2120EA; --e-global-color-secondary: #54595F; --e-global-color-text: #212121; --e-global-color-accent: #61CE70; --e-global-color-57687ba: #EBEEFF; --e-global-color-aafb1fb: #F5F4FF; --e-global-typography-primary-font-family: "Roboto"; --e-global-typography-primary-font-weight: 600; --e-global-typography-secondary-font-family: "Roboto Slab"; --e-global-typography-secondary-font-weight: 400; --e-global-typography-text-font-family: "Roboto"; --e-global-typography-text-font-weight: 400; --e-global-typography-accent-font-family: "Roboto"; --e-global-typography-accent-font-weight: 500; }
+.elementor-kit-1450 { --e-global-color-primary: #2120EA; --e-global-color-secondary: #54595F; --e-global-color-text: #212121; --e-global-color-accent: #61CE70; --e-global-color-57687ba: #EBEEFF; --e-global-color-aafb1fb: #F5F4FF; --e-global-typography-primary-font-family: "Poppins"; --e-global-typography-primary-font-weight: 600; --e-global-typography-secondary-font-family: "Poppins"; --e-global-typography-secondary-font-weight: 400; --e-global-typography-text-font-family: "Poppins"; --e-global-typography-text-font-weight: 400; --e-global-typography-accent-font-family: "Poppins"; --e-global-typography-accent-font-weight: 500; }
 
 .elementor-kit-1450 e-page-transition { background-color: rgb(255, 188, 125); }
 

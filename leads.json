@@ -1,0 +1,25 @@
+[
+  {
+    "id": "DLC-712367",
+    "name": "Test Contractor",
+    "mobile": "9876543210",
+    "email": "contractor@test.com",
+    "city": "Delhi NCR",
+    "workers": "Labour (General Labour), Mason (Plastering Mason)",
+    "count": "2-5 Workers",
+    "company": "Apex Construction",
+    "company_type": "Private Ltd",
+    "source": "Contractor Project Application",
+    "timestamp": "2026-11-01 14:37:11"
+  },
+  {
+    "id": "DLC-551360",
+    "name": "NextJS Test Contractor",
+    "mobile": "9876543210",
+    "email": "nextjs@example.com",
+    "city": "Noida",
+    "workers": "Masons, Electricians",
+    "count": "2-5 Workers",
+    "timestamp": "2026-10-30 09:16:40"
+  }
+]

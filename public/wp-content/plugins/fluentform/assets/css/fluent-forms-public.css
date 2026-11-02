@@ -1,0 +1,765 @@
+@charset "utf-8";
+
+.fluentform * { box-sizing: border-box; }
+
+.fluentform .clearfix::after, .fluentform .clearfix::before, .fluentform .ff-el-group::after, .fluentform .ff-el-group::before, .fluentform .ff-el-repeat .ff-el-input--content::after, .fluentform .ff-el-repeat .ff-el-input--content::before, .fluentform .ff-step-body::after, .fluentform .ff-step-body::before { content: " "; display: table; }
+
+.fluentform .clearfix::after, .fluentform .ff-el-group::after, .fluentform .ff-el-repeat .ff-el-input--content::after, .fluentform .ff-step-body::after { clear: both; }
+
+@media (min-width: 768px) {
+  .frm-fluent-form .ff-t-container { display: flex; gap: 15px; width: 100%; }
+  .frm-fluent-form .ff-t-container.ff_cond_v { display: flex !important; }
+  .frm-fluent-form .ff-t-container.mobile:not(.ff_excluded) { display: block !important; }
+  .frm-fluent-form .ff-name-address-wrapper .ff-t-cell, .frm-fluent-form .ff-name-field-wrapper .ff-t-cell { justify-content: flex-end; }
+  .frm-fluent-form .ff-t-cell { display: flex; flex-direction: column; vertical-align: inherit; width: 100%; }
+  .frm-fluent-form .ff-t-cell:first-of-type { padding-left: 0px; }
+  .frm-fluent-form .ff-t-cell:last-of-type { flex-grow: 1; padding-right: 0px; }
+  .frm-fluent-form .ff-t-cell .ff_submit_btn_wrapper_custom { align-items: flex-end; display: flex; margin: auto 0px 0px; }
+  .frm-fluent-form .ff-t-cell .ff_submit_btn_wrapper_custom.ff-text-center { justify-content: center; }
+  .frm-fluent-form .ff-t-cell .ff_submit_btn_wrapper_custom.ff-text-right { justify-content: flex-end; }
+  .frm-fluent-form .ff-t-cell .ff_submit_btn_wrapper_custom button { margin-bottom: 20px; }
+}
+
+@media (max-width: 768px) {
+  .ff-t-cell { margin-left: 0px !important; }
+}
+
+.ff-cropper-lity .lity-container { max-width: 960px; }
+
+.ff-cropper-lity .lity-content { box-shadow: none; max-width: 960px; }
+
+.ff-cropper-lightbox { background: rgb(255, 255, 255); border-radius: 6px; max-width: 960px; overflow: hidden; width: min(960px, -40px + 100vw); }
+
+.ff-cropper-lightbox__footer, .ff-cropper-lightbox__header { align-items: center; display: flex; gap: 10px; justify-content: space-between; padding: 16px 20px; }
+
+.ff-cropper-lightbox__header { border-bottom: 1px solid rgb(236, 236, 236); }
+
+.ff-cropper-lightbox__title { font-size: 18px; font-weight: 600; margin: 0px; }
+
+.ff-cropper-lity .lity-close.ff-cropper-lightbox__close { font-family: Arial, Baskerville, monospace; font-size: 28px; height: 32px; line-height: 32px; padding: 0px; position: static; right: auto; text-align: center; text-decoration: none; top: auto; width: 32px; z-index: auto; }
+
+.ff-cropper-lity .lity-close.ff-cropper-lightbox__close, .ff-cropper-lity .lity-close.ff-cropper-lightbox__close:active, .ff-cropper-lity .lity-close.ff-cropper-lightbox__close:focus, .ff-cropper-lity .lity-close.ff-cropper-lightbox__close:hover, .ff-cropper-lity .lity-close.ff-cropper-lightbox__close:visited { background: none; border: 0px; box-shadow: none; color: rgb(0, 0, 0); text-shadow: none; }
+
+.ff-cropper-lightbox__body { max-height: calc(-180px + 100vh); overflow: auto; padding: 20px; }
+
+.ff-cropper-lightbox__canvas { align-items: center; display: flex; justify-content: center; max-height: calc(-360px + 100vh); min-height: 320px; overflow: hidden; }
+
+.ff-cropper-lightbox__canvas img { display: block; max-height: 100%; max-width: 100%; }
+
+.ff-cropper-lightbox__error, .ff-cropper-lightbox__hint { font-size: 13px; margin-top: 10px; }
+
+.ff-cropper-lightbox__toolbar { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+.ff-cropper-lightbox__toolbar-label { color: rgb(96, 98, 102); font-size: 13px; font-weight: 600; }
+
+.ff-cropper-lightbox__ratio-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.ff-cropper-lightbox__ratio-btn { background: rgb(255, 255, 255); border: 1px solid rgb(220, 223, 230); border-radius: 999px; color: rgb(96, 98, 102); cursor: pointer; font-size: 12px; line-height: 1; padding: 8px 12px; }
+
+.ff-cropper-lightbox__ratio-btn.is-active { background: rgb(236, 245, 255); border-color: rgb(26, 126, 251); color: rgb(26, 126, 251); }
+
+.ff-cropper-lightbox__error { color: rgb(245, 108, 108); min-height: 18px; }
+
+.ff-cropper-lightbox__footer { border-top: 1px solid rgb(236, 236, 236); justify-content: flex-end; }
+
+.ff-cropper-lightbox__btn { appearance: none; background: rgb(255, 255, 255); border: 1px solid rgb(220, 223, 230); border-radius: 4px; color: rgb(96, 98, 102); cursor: pointer; font-family: inherit; line-height: 1.2; padding: 10px 16px; }
+
+.ff-cropper-lightbox__btn:focus, .ff-cropper-lightbox__btn:hover { background: rgb(245, 247, 250); border-color: rgb(192, 196, 204); color: rgb(48, 49, 51); }
+
+.ff-cropper-lightbox__btn--primary { background: rgb(26, 126, 251); border-color: rgb(26, 126, 251); color: rgb(255, 255, 255); }
+
+.ff-cropper-lightbox__btn--primary:focus, .ff-cropper-lightbox__btn--primary:hover { background: rgb(15, 111, 232); border-color: rgb(15, 111, 232); color: rgb(255, 255, 255); }
+
+@media (max-width: 767px) {
+  .ff-cropper-lightbox { width: calc(-24px + 100vw); }
+  .ff-cropper-lightbox__body { max-height: calc(-150px + 100vh); padding: 16px; }
+  .ff-cropper-lightbox__footer, .ff-cropper-lightbox__header { padding: 14px 16px; }
+}
+
+.fluentform .ff-el-group { margin-bottom: 20px; }
+
+.fluentform .ff-el-group.ff-el-form-top .ff-el-input--label { display: block; float: none; text-align: left; }
+
+.fluentform .ff-el-group.ff-el-form-top .ff-el-input--content { margin-bottom: 0px; margin-left: auto; }
+
+@media (min-width: 481px) {
+  .fluentform .ff-el-group.ff-el-form-left .ff-el-input--label { text-align: left; }
+  .fluentform .ff-el-group.ff-el-form-right .ff-el-input--label { text-align: right; }
+}
+
+.fluentform .ff-el-input--label { display: inline-block; margin-bottom: 5px; position: relative; }
+
+.fluentform .ff-el-input--label.ff-el-is-required.asterisk-left label::before { color: var(--fluentform-danger); content: "* " / ""; margin-right: 3px; }
+
+.fluentform .ff-el-input--label.ff-el-is-required.asterisk-right label::after { color: var(--fluentform-danger); content: " *" / ""; margin-left: 3px; }
+
+.fluentform .ff-el-form-control { display: block; width: 100%; }
+
+.fluentform .ff-el-ratings { --ff-rating-inactive-color: #d4d4d4; --ff-rating-active-color: #ffb100; display: inline-flex; gap: 3px; line-height: 40px; }
+
+.fluentform .ff-el-ratings input[type="radio"] { display: none; height: 0px !important; visibility: hidden !important; width: 0px !important; }
+
+.fluentform .ff-el-ratings label { align-items: center; border-radius: 4px; display: inline-flex; justify-content: center; margin-right: 3px; outline: none; }
+
+.fluentform .ff-el-ratings label:focus, .fluentform .ff-el-ratings label:focus-within { box-shadow: rgba(255, 177, 0, 0.25) 0px 0px 0px 2px; }
+
+.fluentform .ff-el-ratings label .ff-rating-icon { color: var(--ff-rating-inactive-color); display: inline-flex; }
+
+.fluentform .ff-el-ratings label .ff-rating-icon-svg { display: block; height: 22px; transition: 0.3s; vertical-align: middle; width: 22px; }
+
+.fluentform .ff-el-ratings label .ff-rating-icon-svg.scale { transition: 0.15s; }
+
+.fluentform .ff-el-ratings label .ff-rating-icon-svg [fill]:not([fill="none"]) { fill: currentcolor !important; }
+
+.fluentform .ff-el-ratings label .ff-rating-icon-svg [stroke]:not([stroke="none"]) { stroke: currentcolor !important; }
+
+.fluentform .ff-el-ratings label.active .ff-rating-icon { color: var(--ff-rating-active-color); }
+
+.fluentform .ff-el-ratings label:focus, .fluentform .ff-el-ratings label:focus-within, .fluentform .ff-el-ratings label:hover { cursor: pointer; }
+
+.fluentform .ff-el-ratings label:focus .ff-rating-icon-svg, .fluentform .ff-el-ratings label:focus-within .ff-rating-icon-svg, .fluentform .ff-el-ratings label:hover .ff-rating-icon-svg { transform: scale(1.1); }
+
+.fluentform .ff-el-ratings label:focus .ff-rating-icon-svg.scalling, .fluentform .ff-el-ratings label:focus-within .ff-rating-icon-svg.scalling, .fluentform .ff-el-ratings label:hover .ff-rating-icon-svg.scalling { transform: scale(1.2); }
+
+.fluentform .ff-el-repeat .ff-el-form-control { margin-bottom: 10px; width: 100%; }
+
+.fluentform .ff-el-repeat .ff-t-cell { padding: 0px 10px; width: 100%; }
+
+.fluentform .ff-el-repeat .ff-t-cell:first-child { padding-left: 0px; }
+
+.fluentform .ff-el-repeat .ff-t-cell:last-child { padding-right: 0px; }
+
+.fluentform .ff-el-repeat .ff-t-container { display: flex; }
+
+.fluentform .ff-el-repeat-buttons-list span { cursor: pointer; }
+
+@media (min-width: 481px) {
+  .fluentform .ff-el-form-left .ff-el-input--label, .fluentform .ff-el-form-right .ff-el-input--label { float: left; margin-bottom: 0px; padding: 10px 15px 0px 0px; width: 180px; }
+  .fluentform .ff-el-form-left .ff-el-input--content, .fluentform .ff-el-form-right .ff-el-input--content { margin-left: 180px; }
+  .fluentform .ff-el-form-left .ff-t-container .ff-el-input--label, .fluentform .ff-el-form-right .ff-t-container .ff-el-input--label { float: none; margin-bottom: 5px; width: auto; }
+  .fluentform .ff-el-form-left .ff-t-container .ff-el-input--content, .fluentform .ff-el-form-right .ff-t-container .ff-el-input--content { margin-left: auto; }
+}
+
+.fluentform .ff-el-form-right .ff-el-input--label { text-align: right; }
+
+.fluentform .ff-el-is-error .text-danger { font-size: 12px; margin-top: 4px; }
+
+.fluentform .ff-el-is-error .ff-el-form-check-label, .fluentform .ff-el-is-error .ff-el-form-check-label a { color: var(--fluentform-danger); }
+
+.fluentform .ff-el-is-error .ff-el-form-control { border-color: var(--fluentform-danger); }
+
+.fluentform .ff-el-tooltip { cursor: pointer; display: inline-block; margin-left: 2px; position: relative; vertical-align: middle; z-index: 2; }
+
+.fluentform .ff-el-tooltip:hover { color: rgb(0, 0, 0); }
+
+.fluentform .ff-el-tooltip svg { fill: var(--fluentform-primary); }
+
+.fluentform .ff-el-help-message { color: var(--fluentform-secondary); font-size: 12px; font-style: italic; margin-top: 5px; }
+
+.fluentform .ff-el-help-message.ff_ahm { margin-bottom: 5px; margin-top: -3px; }
+
+.fluentform .ff-el-progress { background-color: rgb(233, 236, 239); border-radius: 0.25rem; font-size: 0.75rem; height: 1.3rem; line-height: 1.2rem; overflow: hidden; }
+
+.fluentform .ff-el-progress-bar { background-color: var(--fluentform-primary); color: rgb(255, 255, 255); height: inherit; text-align: right; transition: width 0.3s; width: 0px; }
+
+.fluentform .ff-el-progress-bar span { display: inline-block; padding: 0px 5px 0px 0px; }
+
+.fluentform .ff-el-progress-status { font-size: 0.9rem; margin-bottom: 5px; }
+
+.fluentform .ff-el-progress-title { border-bottom: 2px solid rgb(0, 0, 0); display: inline-block; font-weight: 600; list-style-type: none; margin: 8px 0px 0px; padding-left: 15px; padding-right: 15px; }
+
+.fluentform .ff-el-progress-title li { display: none; }
+
+.fluentform .ff-float-right { float: right; }
+
+.fluentform .ff-chat-gpt-loader-svg { border: 1px solid rgb(206, 212, 218); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px; margin-top: 10px; padding: 15px; position: relative; }
+
+.fluentform .ff-hidden { display: none !important; }
+
+.fluentform .ff-step-t-container { align-items: center; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+
+.fluentform .ff-step-t-container .ff-t-cell { width: auto; }
+
+.fluentform .ff-step-t-container.ff-inner_submit_container .ff-el-group { margin-bottom: 0px; }
+
+.fluentform .ff-step-container { overflow: hidden; }
+
+.fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"], .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] { align-items: stretch; display: flex; gap: 12px; }
+
+.fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header { align-self: stretch; flex: 0 0 30%; margin-bottom: 0px; }
+
+.fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-body, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-body { flex: 1 1 auto; min-width: 0px; }
+
+.fluentform .ff-step-header { margin-bottom: 20px; }
+
+.fluentform .ff-step-header--tabs-left { display: flex; flex-direction: column; margin-bottom: 0px; }
+
+.fluentform .ff-step-header--tabs { background: rgb(245, 248, 255); border-radius: 8px; display: flex; flex-direction: column; padding: 16px; }
+
+.fluentform .ff-step-header--tabs-top .ff-step-titles { justify-content: center; }
+
+.fluentform .ff-step-header--tabs-top .ff-step-titles.ff-step-titles--overflowing { justify-content: flex-start; }
+
+.fluentform .ff-step-header--tabs-top .ff-step-titles li .ff-step-title-text { flex: 0 1 auto; margin: 0px auto; max-width: 100%; width: auto; }
+
+.fluentform .ff-step-header--tabs .ff-step-progress-wrap--tabs { margin-top: 16px; }
+
+.fluentform .ff-step-header--tabs .ff-step-progress-wrap--tabs .ff-el-progress { background: rgb(220, 231, 246); border-radius: 999px; height: 8px; }
+
+.fluentform .ff-step-header--tabs .ff-step-progress-wrap--tabs .ff-el-progress-bar { border-radius: inherit; }
+
+.fluentform .ff-step-header--tabs .ff-step-progress-wrap--tabs .ff-el-progress-bar span { display: none; }
+
+.fluentform .ff-step-header--tabs .ff-step-progress-wrap--tabs .ff-el-progress-status { color: rgb(95, 111, 137); font-size: 14px; font-weight: 600; margin: 8px 0px 0px; text-align: right; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles { counter-reset: none; display: flex; flex-wrap: nowrap; gap: 12px; margin: 0px; overflow: auto hidden; padding: 0px; scrollbar-width: thin; width: 100%; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles.ff-step-titles-navs { cursor: default; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li { align-items: center; background: rgb(255, 255, 255); border: 1px solid rgb(214, 222, 232); border-radius: 14px; color: rgb(75, 85, 99); display: flex; flex: 0 0 160px; font-size: 14px; font-weight: 600; gap: 8px; justify-content: center; line-height: 1.3; margin: 0px; min-height: 48px; padding: 12px 14px; text-align: center; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li::after, .fluentform .ff-step-header--tabs .ff-step-titles li::before { display: none; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li .ff-step-title-icon { align-items: center; color: inherit; display: inline-flex; flex: 0 0 auto; font-size: 16px; height: 16px; justify-content: center; line-height: 1; width: 16px; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li .ff-step-title-text { align-items: center; display: flex; flex: 1 1 auto; gap: 8px; justify-content: center; min-width: 0px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li .ff-step-title-text i, .fluentform .ff-step-header--tabs .ff-step-titles li .ff-step-title-text span[class*="dashicons"], .fluentform .ff-step-header--tabs .ff-step-titles li .ff-step-title-text svg { align-items: center; display: inline-flex; flex: 0 0 auto; justify-content: center; line-height: 1; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li .ff-step-title-text svg { height: 16px; width: 16px; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li:first-child, .fluentform .ff-step-header--tabs .ff-step-titles li:last-child { padding-left: 14px; padding-right: 14px; }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li:focus-visible, .fluentform .ff-step-header--tabs .ff-step-titles li:hover { background: rgb(248, 251, 255); border-color: rgb(184, 212, 251); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li.ff_completed { background: rgb(248, 251, 255); border-color: rgb(200, 220, 251); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs .ff-step-titles li.ff_active { background: rgb(242, 248, 255); border-color: rgb(0, 123, 255); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs-left { background: rgb(245, 248, 255); border-radius: 12px; padding: 16px; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles { background: transparent; border: 0px; border-radius: 0px; counter-reset: step 0; display: block; flex: 1 1 auto; margin-bottom: 0px; max-height: 240px; min-height: 0px; overflow: hidden auto; padding: 0px; scrollbar-width: thin; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li { align-items: center; background: rgb(255, 255, 255); border: 1px solid rgb(214, 222, 232); border-radius: 8px; box-sizing: border-box; color: rgb(75, 85, 99); display: flex; font-size: 14px; font-weight: 600; justify-content: flex-start; margin: 0px 0px 16px; min-height: 48px; overflow: hidden; padding: 12px 14px 12px 48px; position: relative; text-align: left; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li::before { align-items: center; background: rgb(255, 255, 255); border: 1px solid rgb(200, 209, 220); border-radius: 8px; color: rgb(75, 85, 99); content: counter(step); counter-increment: step 1; display: flex; font-size: 13px; font-weight: 700; height: 28px; justify-content: center; left: 12px; line-height: 1; margin: 0px; position: absolute; top: 50%; transform: translateY(-50%); width: 28px; z-index: 2; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li::after { background: rgb(217, 224, 232); content: ""; height: 10px; left: 34px; position: absolute; top: calc(100% + 1px); width: 2px; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text { display: block; flex: 1 1 auto; justify-content: flex-start; line-height: 1.3; min-width: 0px; overflow: hidden; padding-left: 4px; text-overflow: ellipsis; white-space: nowrap; width: auto; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text i, .fluentform .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text span[class*="dashicons"], .fluentform .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text svg { align-items: center; display: inline-flex; flex: 0 0 auto; justify-content: center; line-height: 1; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text svg { height: 16px; width: 16px; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li:focus-visible, .fluentform .ff-step-header--tabs-left .ff-step-titles li:hover { background: rgb(248, 251, 255); border-color: rgb(184, 212, 251); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li.ff_completed { background: rgb(248, 251, 255); border-color: rgb(200, 220, 251); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li.ff_completed::before { background: rgb(255, 255, 255); border-color: rgb(0, 123, 255); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li.ff_completed::after { background: rgb(158, 197, 254); }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li.ff_active { background: rgb(242, 248, 255); border-color: rgb(0, 123, 255); color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li.ff_active::before { background: rgb(0, 123, 255); border-color: rgb(0, 123, 255); color: rgb(255, 255, 255); }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li:first-child { padding-left: 48px; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li:last-child { margin-bottom: 0px; padding-left: 48px; padding-right: 14px; }
+
+.fluentform .ff-step-header--tabs-left .ff-step-titles li:last-child::after { display: none; }
+
+.fluentform .ff-step-titles { counter-reset: step 0; display: table; margin: 0px 0px 20px; overflow: hidden; padding: 0px; position: relative; table-layout: fixed; text-align: center; width: 100%; }
+
+.fluentform .ff-step-titles--clickable li, .fluentform .ff-step-titles-navs { cursor: pointer; }
+
+.fluentform .ff-step-titles--clickable li:focus-visible { outline: solid 2px; outline-offset: 2px; }
+
+.fluentform .ff-step-titles li { color: rgb(51, 51, 51); display: table-cell; font-size: 12px; list-style-type: none; padding: 0px 10px; position: relative; vertical-align: top; width: auto; }
+
+.fluentform .ff-step-titles li.ff_active, .fluentform .ff-step-titles li.ff_completed { color: rgb(0, 123, 255); }
+
+.fluentform .ff-step-titles li.ff_active::before, .fluentform .ff-step-titles li.ff_completed::before { background: rgb(0, 123, 255); border: 1px solid transparent; color: rgb(255, 255, 255); }
+
+.fluentform .ff-step-titles li.ff_active::after, .fluentform .ff-step-titles li.ff_completed::after { background: rgb(0, 123, 255); }
+
+.fluentform .ff-step-titles li.ff_active::after { right: 0px; }
+
+.fluentform .ff-step-titles li::before { background: rgb(255, 255, 255); border: 1px solid; border-radius: 3px; color: rgb(51, 51, 51); content: counter(step); counter-increment: step 1; display: block; font-size: 10px; line-height: 20px; margin: 0px auto 5px; position: relative; vertical-align: top; width: 20px; z-index: 10; }
+
+.fluentform .ff-step-titles li::after { background: rgb(0, 0, 0); content: ""; height: 2px; left: -50%; position: absolute; top: 9px; width: 100%; z-index: 1; }
+
+.fluentform .ff-step-titles li:first-child { padding-left: 0px; }
+
+.fluentform .ff-step-titles li:first-child::after { left: 50%; }
+
+.fluentform .ff-step-titles li:last-child { padding-right: 0px; }
+
+.fluentform .ff-step-titles li:last-child::after { left: -50%; }
+
+.fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .fluentform .ff-step-titles, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .fluentform .ff-step-titles { margin-bottom: 0px; }
+
+.fluentform .ff-step-body { left: 0px; margin-bottom: 15px; position: relative; top: 0px; }
+
+@media (max-width: 767px) {
+  .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"], .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] { display: block; }
+  .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header { flex: unset; margin-bottom: 20px; }
+  .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles { background: transparent; border: 0px; border-radius: 0px; display: flex; gap: 10px; max-height: none; overflow: auto hidden; padding: 0px; }
+  .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li { border-radius: 12px; justify-content: center; margin: 0px; min-height: 56px; padding: 14px 12px; text-align: center; }
+  .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li::after, .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li::before, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li::after, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li::before { display: none; }
+  .fluentform .ff-step-container[data-progress_indicator="steps_with_nav"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text, .fluentform .ff-step-container[data-progress_indicator="tabs"][data-progress_layout="left"] .ff-step-header--tabs-left .ff-step-titles li .ff-step-title-text { justify-content: center; }
+}
+
+.fluentform .ff-upload-progress { margin: 10px 0px; }
+
+.fluentform .ff-upload-progress-inline { border-radius: 3px; height: 6px; margin: 4px 0px; position: relative; }
+
+.fluentform .ff-upload-preview { border: 1px solid rgb(206, 212, 218); border-radius: 3px; margin-top: 5px; }
+
+.fluentform .ff-upload-preview:first-child { margin-top: 0px; }
+
+.fluentform .ff-upload-preview-img { background-position: 50% center; background-repeat: no-repeat; background-size: cover; height: 70px; width: 70px; }
+
+.fluentform .ff-upload-container-small-column-image { display: flex; flex-wrap: wrap-reverse; justify-content: center; text-align: center; }
+
+.fluentform .ff-upload-details, .fluentform .ff-upload-preview { zoom: 1; overflow: hidden; }
+
+.fluentform .ff-upload-details, .fluentform .ff-upload-thumb { display: table-cell; vertical-align: middle; }
+
+.fluentform .ff-upload-thumb { background-color: rgb(238, 238, 238); }
+
+.fluentform .ff-upload-details { border-left: 1px solid rgb(235, 238, 240); padding: 0px 10px; position: relative; width: 10000px; }
+
+.fluentform .ff-upload-details .ff-inline-block, .fluentform .ff-upload-details .ff-upload-error { font-size: 11px; }
+
+.fluentform .ff-upload-remove { color: var(--fluentform-danger); cursor: pointer; font-size: 16px; line-height: 1; padding: 0px 4px; position: absolute; right: 0px; top: 3px; box-shadow: none !important; }
+
+.fluentform .ff-upload-remove:hover { color: var(--fluentform-danger); text-shadow: rgb(0, 0, 0) 1px 1px 1px !important; }
+
+.fluentform .ff-upload-filename { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.fluentform .ff-table { margin-bottom: 0px; }
+
+.fluentform .ff-checkable-grids { border: 1px solid rgb(241, 241, 241); border-collapse: collapse; }
+
+.fluentform .ff-checkable-grids thead > tr > th { background: rgb(241, 241, 241); border: 0px; padding: 7px 5px; text-align: center; }
+
+.fluentform .ff-checkable-grids tbody > tr > td { border: 0px; padding: 7px 5px; }
+
+.fluentform .ff-checkable-grids tbody > tr > td:not(:first-of-type) { text-align: center; }
+
+.fluentform .ff-checkable-grids tbody > tr:nth-child(2n) > td { background: rgb(241, 241, 241); }
+
+.fluentform .ff-checkable-grids tbody > tr:nth-child(2n-1) > td { background: rgb(255, 255, 255); }
+
+.fluentform .ff-screen-reader-element { clip: rect(0px, 0px, 0px, 0px) !important; overflow-wrap: normal !important; border: 0px !important; height: 1px !important; margin: 0px !important; overflow: hidden !important; padding: 0px !important; position: absolute !important; width: 1px !important; }
+
+.fluentform .ff_upload_btn.ff-btn { background: rgb(111, 117, 126); border-color: rgb(111, 117, 126); color: rgb(255, 255, 255); cursor: pointer; display: inline-block; padding: 10px 20px; }
+
+.fluentform .ff_upload_btn.ff-btn:hover { background-color: rgb(145, 149, 155); outline: none; }
+
+.fluentform .ff_upload_btn.ff-btn:focus-visible { background-color: rgb(145, 149, 155); outline: none; }
+
+.fluentform .ff-el-tc { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-collapse: collapse; display: table; width: 100%; }
+
+.fluentform .ff-el-tc label.ff_tc_label { display: table-row; }
+
+.fluentform .ff-el-tc label.ff_tc_label > span { padding-top: 8px !important; width: 20px; }
+
+.fluentform .ff-el-tc label.ff_tc_label > div, .fluentform .ff-el-tc label.ff_tc_label > span { display: table-cell; }
+
+.fluentform .ff-saved-state-input .ff_input-group-text { background-color: rgb(26, 126, 251); border-color: rgb(26, 126, 251); margin-left: -1px; }
+
+.fluentform .ff-saved-state-input .ff_input-group-text:hover { background-color: rgb(72, 152, 252); border-color: rgb(72, 152, 252); opacity: 1; }
+
+.fluentform .ff-saved-state-input .ff_input-group-text img { width: 28px; }
+
+.fluentform .ff-saved-state-link input { text-overflow: ellipsis; }
+
+.fluentform .ff-hide-group { display: none; }
+
+.fluentform .ff_t_c { margin: 0px; padding: 0px 5px 0px 0px; }
+
+.fluentform .ff_t_c p { margin: 0px; padding: 0px; }
+
+.fluentform .force-hide { border: 0px; display: block; height: 0px; margin: 0px; opacity: 0; padding: 0px; visibility: hidden; }
+
+.fluentform input[type="checkbox"], .fluentform input[type="radio"] { display: inline-block; margin: 0px; }
+
+.fluentform .text-danger { color: var(--fluentform-danger); }
+
+.fluentform .iti { width: 100%; }
+
+.fluentform .iti__selected-flag { background: rgba(0, 0, 0, 0.1); border-bottom-left-radius: 6px; border-top-left-radius: 6px; }
+
+.fluentform .ff_gdpr_field { margin-right: 5px; }
+
+.fluentform form.ff-form-has-steps .ff-btn-submit { visibility: hidden; }
+
+.fluentform form.ff-form-has-steps .ff_submit_btn_wrapper { text-align: right; }
+
+.fluentform textarea { max-width: 100%; }
+
+.fluentform .ff-el-form-check { margin-bottom: 5px; }
+
+.fluentform .ff-el-form-check span.ff_span { margin-left: 6px; }
+
+.fluentform .ff-el-form-check-label .ff-el-form-check-input { position: relative; top: -2px; vertical-align: middle; }
+
+.fluentform .ff-inline-block { display: inline-block; }
+
+.fluentform .ff-inline-block + .ff-inline-block { margin-left: 10px; }
+
+.fluentform .ff-text-left { text-align: left; }
+
+.fluentform .ff-text-center { text-align: center; }
+
+.fluentform .ff-text-right { text-align: right; }
+
+.fluentform .ff-el-form-control:focus ~ .ff-el-help-message { display: block !important; }
+
+.fluentform .ff-el-form-control::placeholder { color: rgb(134, 142, 150); opacity: 1; }
+
+.fluentform .ff-el-form-control:disabled, .fluentform .ff-el-form-control[readonly]:not(.flatpickr-input) { background-color: rgb(233, 236, 239); opacity: 1; }
+
+.fluentform .iti__search-input { min-height: 30px; }
+
+.fluentform-step { float: left; height: 1px; overflow-x: hidden; padding: 3px; }
+
+.fluentform-step.active { height: auto; width: 100%; }
+
+.fluentform-step .ff_summary_container { font-size: 14px; margin-top: 10px; }
+
+.step-nav .next { float: right; }
+
+.fluentform .has-conditions { display: none; }
+
+.ff-message-success { border: 1px solid rgb(206, 212, 218); box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px; margin-top: 10px; padding: 15px; position: relative; }
+
+.ff-errors-in-stack { display: none; margin-top: 15px; }
+
+.ff-errors-in-stack .error { font-size: 14px; line-height: 1.7; }
+
+.ff-errors-in-stack .error-clear { cursor: pointer; margin-left: 5px; padding: 0px 5px; }
+
+.ff-chat-reply-container div p { border-radius: 6px; margin-top: 12px; padding: 20px 16px; }
+
+.ff-chat-reply-container div .skeleton { animation: 2s linear 0s infinite alternate none running skeleton-loading; padding: 24px; }
+
+@keyframes skeleton-loading { 
+  0% { background-color: rgb(227, 230, 232); }
+  100% { background-color: rgb(240, 243, 245); }
+}
+
+.ff-el-chat-container { position: relative; }
+
+.ff-el-chat-container textarea { outline: none; position: relative; resize: none; }
+
+.ff-el-chat-container .ff_btn_chat_style { background: transparent; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; position: absolute; right: 10px; top: 38%; }
+
+.ff-el-chat-container .ff_btn_chat_style svg:hover { cursor: pointer; opacity: 0.8; outline: 0px; text-decoration: none; transition: 0.4s; }
+
+.iti-mobile .iti--container { z-index: 9999; }
+
+.fluentform .hidden_field { display: none !important; }
+
+.fluentform .ff_force_hide { display: none !important; visibility: hidden !important; }
+
+.fluentform .ff_scrolled_text { background: rgb(233, 235, 237); height: 200px; overflow: scroll; padding: 10px 15px; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check label { margin: 0px; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check label:focus-within span { background-color: rgb(179, 212, 252); }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check { display: inline-block; margin: 0px 0px 10px; position: relative; float: none !important; width: auto !important; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check input { margin: 0px; opacity: 0; outline: none; position: absolute; z-index: -1; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check label > span { appearance: none; background: rgb(255, 255, 255); border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: rgb(220, 223, 230) rgb(220, 223, 230) rgb(220, 223, 230) currentcolor; border-image: none; border-radius: 0px; box-sizing: border-box; color: rgb(96, 98, 102); cursor: pointer; display: inline-block; font-size: 14px; font-weight: 500; line-height: 1; margin: 0px; outline: none; padding: 12px 20px; position: relative; text-align: center; user-select: none; vertical-align: middle; white-space: nowrap; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check label > span:hover { color: rgb(26, 126, 251); }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff-el-image-holder { border: 1px solid rgb(220, 223, 229); overflow: hidden; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff-el-image-holder span { margin-left: -1px; width: 100%; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; border-radius: 0px !important; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff-el-image-holder.ff_item_selected { border-color: rgb(26, 126, 251); }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check:first-child label > span { border-left: 1px solid rgb(220, 223, 230); border-radius: 4px 0px 0px 4px; box-shadow: none !important; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check:last-child label > span { border-radius: 0px 4px 4px 0px; }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff_item_selected label > span { background-color: rgb(26, 126, 251); border-color: rgb(26, 126, 251); box-shadow: rgb(140, 197, 255) -1px 0px 0px 0px; color: rgb(255, 255, 255); }
+
+.fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff_item_selected:first-child label > span { border-left-color: rgb(26, 126, 251); }
+
+@media only screen and (max-width: 768px) {
+  .fluentform .ff-el-group.ff_list_buttons .ff-el-form-check { display: block; width: 100%; }
+  .fluentform .ff-el-group.ff_list_buttons .ff-el-form-check label > span { display: block; width: 100%; border: 1px solid !important; border-radius: 4px !important; box-shadow: none !important; }
+}
+
+.fluentform .ff-el-group.ff-hpsf-container { display: none !important; position: absolute !important; transform: translateX(1000%) !important; }
+
+.fluentform div.ff-el-form-hide_label > .ff-el-input--label { display: none; visibility: hidden; }
+
+.fluentform .ff_file_upload_holder { margin-bottom: 0px; }
+
+.fluentform .ff-dropzone .ff_upload_btn.ff-btn { background: rgba(223, 240, 255, 0.13); border: 1px dashed var(--fluentform-primary); border-radius: var(--fluentform-border-radius); color: var(--fluentform-secondary); display: block; padding: 35px; text-align: center; transition: 0.2s; width: 100%; }
+
+.fluentform .ff-dropzone .ff_upload_btn.ff-btn:hover { background: rgba(223, 240, 255, 0.49); }
+
+.fluentform .ff-dropzone .ff-uploaded-list { margin-top: 10px; }
+
+.fluentform .ff_center { text-align: center; }
+
+.fluentform .ff_right { text-align: right; }
+
+.fluentform .ff_left { text-align: left; }
+
+.fluentform .ff-form-inline .ff-t-container, .fluentform .ff-form-inline > .ff-el-group, .fluentform .ff-form-inline > .ff-name-field-wrapper { display: inline-block; margin-right: 10px; vertical-align: top; }
+
+.fluentform .ff-form-inline .ff-t-container .ff-t-cell .ff-el-input--label, .fluentform .ff-form-inline .ff-t-container > .ff-el-input--label, .fluentform .ff-form-inline > .ff-el-group .ff-t-cell .ff-el-input--label, .fluentform .ff-form-inline > .ff-el-group > .ff-el-input--label, .fluentform .ff-form-inline > .ff-name-field-wrapper .ff-t-cell .ff-el-input--label, .fluentform .ff-form-inline > .ff-name-field-wrapper > .ff-el-input--label { display: none; }
+
+.fluentform .ff-form-inline .ff-t-container .ff-el-input--content, .fluentform .ff-form-inline > .ff-el-group .ff-el-input--content, .fluentform .ff-form-inline > .ff-name-field-wrapper .ff-el-input--content { margin-left: 0px; }
+
+.fluentform .ff-form-inline .ff-t-container:last-child, .fluentform .ff-form-inline > .ff-el-group:last-child, .fluentform .ff-form-inline > .ff-name-field-wrapper:last-child { margin-right: 0px; }
+
+.fluentform .ff-t-container .ff-name-title { width: 40%; }
+
+.fluentform .ff_hide_label .ff-el-input--label { display: none; }
+
+.fluentform .field-value { white-space: pre-line; }
+
+.fluentform .ff-el-group .ff-read-only { opacity: 1; pointer-events: none; user-select: none; background-color: rgb(233, 236, 239) !important; }
+
+.fluentform .ff-el-group .ff-read-only:focus { outline: none; }
+
+.fluentform label.ff-el-image-input-src { background-position: 50% center; background-repeat: no-repeat; background-size: cover; cursor: pointer; display: block; height: 200px; width: 200px; }
+
+.fluentform .ff-el-image-holder { float: left; margin-bottom: 20px; margin-right: 20px; width: 200px; }
+
+.fluentform .ff-el-image-holder .ff-el-form-check-label { padding-left: 1px; }
+
+.fluentform .ff_el_checkable_photo_holders { display: block; margin-bottom: -20px; overflow: hidden; }
+
+.fluentform .ff-other-input-wrapper input { background: inherit; }
+
+.fluentform .ff-other-input-wrapper { display: none; margin-top: 8px; }
+
+.fluentform .select2-container { width: 100% !important; }
+
+.fluentform .select2-container .select2-selection__rendered li { margin: 0px; }
+
+.fluentform .select2-container .select2-search--inline > input { height: calc(2px + 2.25rem); line-height: 1.5; margin-top: 0px; padding: 0.375rem 1.75rem 0.375rem 0.75rem; }
+
+.fluentform .ff-el-form-bottom { display: flex; flex-direction: column-reverse; }
+
+.fluentform .ff-el-form-bottom .ff-el-input--label { margin-bottom: 0px; margin-top: 5px; }
+
+.fluentform .mce-tinymce.mce-container.mce-panel { border: 1px solid rgb(206, 212, 218); }
+
+.fluentform .ff_input-group { align-items: stretch; display: flex; flex-wrap: wrap; position: relative; width: 100%; }
+
+.fluentform .ff_input-group > .ff-el-form-control:not(:first-child) { border-bottom-left-radius: 0px; border-top-left-radius: 0px; display: inline-block; width: auto; }
+
+.fluentform .ff_input-group > .ff-el-form-control:not(:last-child) { border-bottom-right-radius: 0px; border-top-right-radius: 0px; }
+
+.fluentform .ff_input-group .ff-el-form-control { flex: 1 1 auto; margin-bottom: 0px; position: relative; width: 1%; }
+
+.fluentform .ff_input-group-prepend { margin-right: -1px; }
+
+.fluentform .input-group-append { margin-left: -1px; }
+
+.fluentform .ff_input-group-append, .fluentform .ff_input-group-prepend { display: flex; }
+
+.fluentform .ff_input-group > .ff_input-group-prepend > .ff_input-group-text { border-bottom-right-radius: 0px; border-top-right-radius: 0px; }
+
+.fluentform .ff_input-group > .ff_input-group-append > .ff_input-group-text { border-bottom-left-radius: 0px; border-top-left-radius: 0px; }
+
+.fluentform .ff_input-group-text { align-items: center; background-color: rgb(233, 236, 239); border-radius: 0.25rem; color: rgb(73, 80, 87); display: flex; font-size: 1rem; font-weight: 400; line-height: 1.5; margin-bottom: 0px; padding: 0.375rem 0.75rem; text-align: center; white-space: nowrap; }
+
+.fluentform .ff_coupon_wrapper .ff_input-group-append { cursor: pointer; }
+
+.fluentform .ff_coupon_wrapper .ff_input-group-append:hover .ff_input-group-text { background: rgb(227, 232, 237); }
+
+.fluentform ul.ff_coupon_responses { list-style: none; margin: 0px; padding: 0px; }
+
+.fluentform ul.ff_coupon_responses li { padding-top: 5px; }
+
+.fluentform ul.ff_coupon_responses span.error-clear { color: rgb(255, 80, 80); font-weight: 700; margin-right: 10px; }
+
+.fluentform ul.ff_coupon_responses .ff_error { color: rgb(245, 108, 108); cursor: pointer; }
+
+.fluentform ul.ff_coupon_responses .ff_success { color: rgb(40, 167, 69); }
+
+.fluentform .ff-btn.disabled { opacity: 0.65; }
+
+.fluentform .ff-btn.ff-working { position: relative; transition: 0.3s; }
+
+.fluentform .ff-btn.ff-working::after { animation: 4s ease 0s infinite normal none running ff-progress-anim; background: rgba(255, 255, 255, 0.4); bottom: 0px; content: ""; height: 5px; left: 0px; position: absolute; right: 0px; }
+
+.fluentform .ff-btn-block { display: block; width: 100%; }
+
+.fluentform .ff-btn-block + .ff-el-btn-block { margin-top: 8px; }
+
+.fluentform .ff_submitting { pointer-events: none; }
+
+@keyframes ff-progress-anim { 
+  0% { width: 0px; }
+  5% { width: 0px; }
+  10% { width: 15%; }
+  30% { width: 40%; }
+  50% { width: 55%; }
+  80% { width: 100%; }
+  95% { width: 100%; }
+  100% { width: 0px; }
+}
+
+.ff_modal_container { background: rgb(255, 255, 255); max-width: 900px; overflow: auto; padding: 30px; max-height: 90vh !important; }
+
+@media only screen and (min-width: 1000px) {
+  .ff_modal_container { width: 900px; }
+}
+
+.select2-results__option { margin: 0px; }
+
+.fluentform span.select2.select2-container::after { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid rgb(73, 80, 87); content: ""; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
+
+.ff_pointer { cursor: pointer; }
+
+.ff_net_table { border: 0px; border-collapse: separate; border-spacing: 0px; line-height: 1.4; margin: 0px; padding: 0px; table-layout: fixed; width: 100%; }
+
+.ff_net_table th { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; font-size: 13px; font-weight: 400; padding: 8px 0px; text-align: center; vertical-align: bottom; }
+
+.ff_net_table th .ff_not-likely { float: left; text-align: left; }
+
+.ff_net_table th .ff_extremely-likely { float: right; text-align: right; }
+
+.ff_net_table tbody tr { background: none; border: 0px; }
+
+.ff_net_table tbody tr td { background-color: rgb(255, 255, 255); border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(221, 221, 221) currentcolor; border-image: none; padding: 0px; text-align: center; vertical-align: middle; }
+
+.ff_net_table tbody tr td input[type="radio"]:checked + label { background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); }
+
+.ff_net_table tbody tr td:first-of-type { border-left: 1px solid rgb(221, 221, 221); border-radius: 5px 0px 0px 5px; }
+
+.ff_net_table tbody tr td:last-child { border-radius: 0px 5px 5px 0px; }
+
+.ff_net_table tbody tr td label { border: 0px; color: rgb(68, 68, 68); cursor: pointer; display: block; font-size: 16px; font-weight: 700; height: 40px; line-height: 40px; margin: 0px; position: relative; width: 100%; }
+
+.ff_net_table tbody tr td label::after { border: 0px; content: ""; height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; }
+
+.ff_net_table tbody tr td label:hover::after { border: 2px solid rgb(76, 175, 80); }
+
+.ff-el-pop-content { background-color: rgb(0, 0, 0); border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px; color: rgb(255, 255, 255); font-size: 11px; line-height: 1.2; padding: 10px; position: absolute; text-align: center; transform-origin: center bottom; z-index: 9999; }
+
+.ff-checkable-grids.mobile { border: 0px; }
+
+.ff-checkable-grids.mobile tbody tr { padding-top: 0px !important; }
+
+.ff-checkable-grids.mobile tbody tr:nth-child(2n) > td { background: transparent; }
+
+.ff-checkable-grids.mobile tbody td { padding-left: 10px !important; text-align: left !important; }
+
+.ff-checkable-grids.mobile tbody td.ff_grid_header { margin: 0px; background-color: rgb(238, 238, 238) !important; }
+
+.ff-checkable-grids.mobile tbody td::after { content: attr(data-label); display: inline-block; letter-spacing: 0.5pt; padding-left: 10px; white-space: nowrap; }
+
+span.ff-el-rating-text { line-height: 100%; padding-left: 5px; vertical-align: bottom; }
+
+table.ff_repeater_table { border: 0px; border-collapse: collapse; border-spacing: 0px; margin: 0px 0px 5px; padding: 0px; vertical-align: middle; width: 100%; background: transparent !important; table-layout: auto !important; }
+
+table.ff_repeater_table th { font-size: 90%; padding: 0px; text-align: left; }
+
+table.ff_repeater_table th, table.ff_repeater_table tr { border: 0px; padding-top: 5px; background: transparent !important; }
+
+table.ff_repeater_table td { border: 0px; max-width: 100%; padding: 0px 15px 15px 0px; text-align: left; width: 282px; background: transparent !important; }
+
+table.ff_repeater_table tbody tr:only-child td .repeat-minus { visibility: hidden; }
+
+table.ff_repeater_table .ff-el-group { margin: 0px; padding: 0px; }
+
+table.ff_repeater_table .repeat_btn { padding-right: 0px; vertical-align: middle; width: 30px; }
+
+table.ff_repeater_table .repeat_btn span.ff-icon { cursor: pointer; margin-right: 10px; }
+
+table.ff_repeater_table .repeat_btn span.ff-icon.icon-minus-circle { margin-right: 0px; }
+
+table.ff_repeater_table.repeat-maxed .repeat_btn .repeat-plus { visibility: hidden; }
+
+.ff-repeater-container { display: flex; flex-direction: column; }
+
+.ff-repeater-container .repeat_btn { align-self: center; display: flex; }
+
+.ff-repeater-container .ff_repeater_cont_row, .ff-repeater-container .ff_repeater_header { display: flex; flex-wrap: nowrap; }
+
+.ff-repeater-container .ff_repeater_cont_row:only-child .repeat-minus { visibility: hidden; }
+
+.ff-repeater-container .ff_repeater_cell, .ff-repeater-container .ff_repeater_header_item { box-sizing: border-box; padding: 0px 15px 0px 0px; text-align: left; }
+
+.ff-repeater-container .ff-el-repeat-buttons-list { display: flex; margin-top: 34%; }
+
+.ff_repeater_table.mobile tbody td { display: block; padding: 10px; width: 100%; }
+
+.ff_repeater_table.mobile tbody td .ff-el-group { margin-top: 6px; }
+
+.ff_repeater_table.mobile tbody td::before { clear: both; content: attr(data-label); display: block; font-size: 0.875em; letter-spacing: 0.5pt; white-space: nowrap; }
+
+.ff-el-section-break .ff-el-section-title { font-weight: 600; margin-bottom: 5px; }
+
+.ff-el-section-break hr { background-color: rgb(218, 219, 221); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; height: 1px; margin-bottom: 10px; }
+
+table.ff_flexible_table.ff-checkable-grids { width: 100%; }
+
+.ff_flexible_table.mobile thead { left: -9999px; position: absolute; top: -9999px; }
+
+.ff_flexible_table.mobile tbody td { display: block; padding: 10px; width: 100%; }
+
+.ff_flexible_table.mobile tbody tr { background: rgb(255, 255, 255); border-color: rgb(206, 212, 218); border-style: solid; border-width: 2px 1px 4px; display: block; margin: 16px 0px 10px; position: relative; }
+
+@media only screen and (max-width: 400px) {
+  .ff_repeater_table { width: 100%; }
+  .ff_repeater_table thead { display: none; }
+  .ff_repeater_table tbody tr { border: 1px solid rgb(221, 221, 221); display: block; margin-bottom: 15px; padding: 10px; }
+  .ff_repeater_table tbody td { display: block; padding: 5px 0px; text-align: left; width: 100% !important; }
+  .ff_repeater_table tbody td .ff-el-input--content { width: 100%; }
+  .ff_repeater_table .repeat_btn { margin-top: 10px; padding: 10px 0px; text-align: center; width: 100%; }
+  .ff_repeater_table .repeat_btn .ff-el-repeat-buttons-list { display: flex; justify-content: space-between; }
+  .ff_repeater_table .repeat_btn .ff-el-repeat-buttons-list span { background-color: rgb(240, 240, 240); border-radius: 3px; cursor: pointer; padding: 5px 10px; }
+}
+
+@media only screen and (min-width: 641px) {
+  .fluentform .ff-el-group.ff_list_3col .ff-el-form-check { display: inline-block; margin: 0px 0px 2px; min-height: 28px; padding-right: 16px; vertical-align: top; width: 33.3%; }
+  .fluentform .ff-el-group.ff_list_2col .ff-el-form-check { display: inline-block; margin: 0px; min-height: 28px; padding-right: 16px; vertical-align: top; width: 50%; }
+  .fluentform .ff-el-group.ff_list_4col .ff-el-form-check { display: inline-block; margin: 0px; min-height: 28px; padding-right: 16px; vertical-align: top; width: 25%; }
+  .fluentform .ff-el-group.ff_list_5col .ff-el-form-check { display: inline-block; margin: 0px; min-height: 28px; padding-right: 16px; vertical-align: top; width: 20%; }
+  .fluentform .ff-el-group.ff_list_inline .ff-el-form-check { display: inline-block; margin: 0px 15px 10px 0px; float: none !important; width: auto !important; }
+}
+
+@media (max-width: 767px) {
+  table.ff_flexible_table, table.ff_flexible_table.ff-checkable-grids { border: 0px; }
+  table.ff_flexible_table.ff-checkable-grids tbody tr { padding-top: 0px !important; }
+  table.ff_flexible_table.ff-checkable-grids tbody tr td.ff_grid_header { margin: 0px; text-align: center; background-color: rgb(238, 238, 238) !important; }
+  table.ff_flexible_table.ff-checkable-grids tbody tr td { text-align: left !important; }
+  table.ff_flexible_table.ff-checkable-grids tbody tr td::before { content: none !important; }
+  table.ff_flexible_table.ff-checkable-grids tbody tr td::after { content: attr(data-label); display: inline-block; letter-spacing: 0.5pt; padding-left: 10px; white-space: nowrap; }
+  table.ff_flexible_table.ff-checkable-grids tbody tr:nth-child(2n) > td { background: transparent; }
+  table.ff_flexible_table thead { left: -9999px; position: absolute; top: -9999px; }
+  table.ff_flexible_table tbody tr { background: rgb(255, 255, 255); border-color: rgb(206, 212, 218); border-style: solid; border-width: 2px 1px 4px; display: block; margin: 16px 0px 10px; position: relative; padding-top: 12px !important; }
+  table.ff_flexible_table tbody tr td { display: block; margin-left: 8px; margin-right: 8px; padding: 5px; }
+  table.ff_flexible_table tbody tr td::before { clear: both; content: attr(data-label); display: block; font-size: 0.875em; letter-spacing: 0.5pt; white-space: nowrap; }
+  table.ff_flexible_table tbody tr td.repeat_btn { background-color: rgb(238, 238, 238); margin-left: 0px; padding: 10px !important; width: 100% !important; }
+  table.ff_flexible_table tbody tr td.repeat_btn .ff-el-repeat-buttons-list { float: none; width: 100%; }
+}
+
+@media only screen and (max-width: 768px) {
+  .lity-container { width: 96%; }
+  .fluentform .ff-t-container .ff-name-title { width: 100%; }
+  .ff_repeater_cont_row { background: rgb(255, 255, 255); border-color: rgb(206, 212, 218); border-style: solid; border-width: 2px 1px 4px; display: flex; flex-direction: column; margin: 16px 0px 10px; padding-top: 12px; }
+  .ff_repeater_cont_row .ff_repeater_cell { display: block; margin-left: 8px; margin-right: 8px; padding: 5px; }
+  .ff_repeater_cont_row .ff-t-cell { max-width: 100%; width: 100%; flex-basis: 100% !important; }
+  .ff_repeater_cont_row .ff_repeater_body[role="rowgroup"] { display: flex; flex-direction: column; }
+  .ff-repeater-container .ff-el-repeat-buttons-list { margin-top: -28px; }
+  .ff-el-repeat-buttons-list { margin-top: 0px; }
+}

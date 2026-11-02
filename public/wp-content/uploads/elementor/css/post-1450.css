@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.elementor-kit-1450 { --e-global-color-primary: #2120EA; --e-global-color-secondary: #54595F; --e-global-color-text: #212121; --e-global-color-accent: #61CE70; --e-global-color-57687ba: #EBEEFF; --e-global-color-aafb1fb: #F5F4FF; --e-global-typography-primary-font-family: "Roboto"; --e-global-typography-primary-font-weight: 600; --e-global-typography-secondary-font-family: "Roboto Slab"; --e-global-typography-secondary-font-weight: 400; --e-global-typography-text-font-family: "Roboto"; --e-global-typography-text-font-weight: 400; --e-global-typography-accent-font-family: "Roboto"; --e-global-typography-accent-font-weight: 500; }
+
+.elementor-kit-1450 e-page-transition { background-color: rgb(255, 188, 125); }
+
+.elementor-section.elementor-section-boxed > .elementor-container { max-width: 1140px; }
+
+.e-con { --container-max-width: 1140px; }
+
+.elementor-widget:not(:last-child) { margin-block-end: 20px; }
+
+.elementor-element { --widgets-spacing: 20px 20px; --widgets-spacing-row: 20px; --widgets-spacing-column: 20px; }
+
+h1.entry-title { display: var(--page-title-display); }
+
+@media (max-width: 1024px) {
+  .elementor-section.elementor-section-boxed > .elementor-container { max-width: 1024px; }
+  .e-con { --container-max-width: 1024px; }
+}
+
+@media (max-width: 767px) {
+  .elementor-section.elementor-section-boxed > .elementor-container { max-width: 767px; }
+  .e-con { --container-max-width: 767px; }
+}

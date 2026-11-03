@@ -672,7 +672,7 @@ export default function SiteInitializer() {
           const nextBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-next");
           const paginationEl = widget.querySelector<HTMLElement>(".swiper-pagination");
 
-          const instance = new window.Swiper(swiperEl, {
+          const swiperOptions: any = {
             slidesPerView: desktopSlides,
             spaceBetween: rawSpacing,
             loop: settings.loop !== "no",
@@ -682,14 +682,6 @@ export default function SiteInitializer() {
               pauseOnMouseEnter: true,
             },
             speed: Number(settings.speed) || 600,
-            navigation: prevBtn && nextBtn ? {
-              prevEl: prevBtn,
-              nextEl: nextBtn,
-            } : undefined,
-            pagination: paginationEl ? {
-              el: paginationEl,
-              clickable: true,
-            } : undefined,
             breakpoints: {
               320: {
                 slidesPerView: mobileSlides,
@@ -704,7 +696,23 @@ export default function SiteInitializer() {
                 spaceBetween: rawSpacing,
               },
             },
-          });
+          };
+
+          if (prevBtn && nextBtn) {
+            swiperOptions.navigation = {
+              prevEl: prevBtn,
+              nextEl: nextBtn,
+            };
+          }
+
+          if (paginationEl) {
+            swiperOptions.pagination = {
+              el: paginationEl,
+              clickable: true,
+            };
+          }
+
+          const instance = new window.Swiper(swiperEl, swiperOptions);
 
           swiperInstances.push(instance);
         } catch (err) {

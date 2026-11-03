@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240">
+  <rect width="100%" height="100%" rx="16" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="20" y="20" width="460" height="200" rx="12" fill="#FEF2F2"/>
+  <g transform="translate(50, 75)">
+    <text x="0" y="38" font-family="'Poppins', sans-serif" font-size="36" font-weight="900" fill="#B91C1C" letter-spacing="-0.5">Business Standard</text>
+    <line x1="0" y1="55" x2="360" y2="55" stroke="#B91C1C" stroke-width="2"/>
+  </g>
+</svg>

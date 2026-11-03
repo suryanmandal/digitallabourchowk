@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240">
+  <rect width="100%" height="100%" rx="16" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="20" y="20" width="460" height="200" rx="12" fill="#F8FAFC"/>
+  <g transform="translate(40, 80)">
+    <text x="210" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="900" fill="#0F172A" letter-spacing="1">THE TIMES OF INDIA</text>
+    <text x="210" y="45" text-anchor="middle" font-family="'Poppins', sans-serif" font-size="13" font-weight="600" fill="#64748B" letter-spacing="5">INDIA'S NATIONAL NEWSPAPER</text>
+  </g>
+</svg>

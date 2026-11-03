@@ -639,6 +639,78 @@ export default function SiteInitializer() {
           console.error("Swiper init error:", err);
         }
       });
+
+      // Media Carousel widgets (used on /for-collaboration and /media-coverage)
+      document.querySelectorAll<HTMLElement>(".elementor-widget-media-carousel").forEach((widget) => {
+        try {
+          const swiperEl = widget.querySelector<HTMLElement>(".elementor-main-swiper");
+          if (!swiperEl || (swiperEl as any).swiper) {
+            return;
+          }
+
+          // Clean up stale duplicate clones and reset classes
+          swiperEl.querySelectorAll(".swiper-slide-duplicate").forEach((dup) => dup.remove());
+          swiperEl.classList.remove("swiper-initialized");
+
+          const rawSettings = widget.getAttribute("data-settings");
+          let settings: any = {};
+          if (rawSettings) {
+            try {
+              settings = JSON.parse(rawSettings);
+            } catch (e) {}
+          }
+
+          const defaultSlides = widget.getAttribute("data-id") === "d426b04" ? 5 : 3;
+          const desktopSlides = Number(settings.slides_per_view) || defaultSlides;
+          const tabletSlides = Math.min(desktopSlides, 3);
+          const mobileSlides = Math.min(desktopSlides, 1);
+
+          const rawSpacing = settings.space_between?.size !== undefined ? Number(settings.space_between.size) : 20;
+          const mobileSpacing = settings.space_between_mobile?.size !== undefined ? Number(settings.space_between_mobile.size) : 10;
+
+          const prevBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-prev");
+          const nextBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-next");
+          const paginationEl = widget.querySelector<HTMLElement>(".swiper-pagination");
+
+          const instance = new window.Swiper(swiperEl, {
+            slidesPerView: desktopSlides,
+            spaceBetween: rawSpacing,
+            loop: settings.loop !== "no",
+            autoplay: settings.autoplay === "no" ? false : {
+              delay: Number(settings.autoplay_speed) || 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: Number(settings.speed) || 600,
+            navigation: prevBtn && nextBtn ? {
+              prevEl: prevBtn,
+              nextEl: nextBtn,
+            } : undefined,
+            pagination: paginationEl ? {
+              el: paginationEl,
+              clickable: true,
+            } : undefined,
+            breakpoints: {
+              320: {
+                slidesPerView: mobileSlides,
+                spaceBetween: mobileSpacing,
+              },
+              768: {
+                slidesPerView: tabletSlides,
+                spaceBetween: rawSpacing,
+              },
+              1024: {
+                slidesPerView: desktopSlides,
+                spaceBetween: rawSpacing,
+              },
+            },
+          });
+
+          swiperInstances.push(instance);
+        } catch (err) {
+          console.error("Media carousel Swiper init error:", err);
+        }
+      });
     };
 
     const swiperTimer1 = setTimeout(initSwipers, 150);

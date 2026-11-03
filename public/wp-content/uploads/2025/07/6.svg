@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240">
+  <rect width="100%" height="100%" rx="16" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="20" y="20" width="460" height="200" rx="12" fill="#F0FDF4"/>
+  <g transform="translate(55, 75)">
+    <text x="0" y="35" font-family="'Poppins', sans-serif" font-size="42" font-weight="900" fill="#FF6B00">#startup</text>
+    <text x="190" y="35" font-family="'Poppins', sans-serif" font-size="42" font-weight="900" fill="#16A34A">india</text>
+    <text x="2" y="65" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#0F766E" letter-spacing="2">GOVERNMENT OF INDIA INITIATIVE</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240">
+  <rect width="100%" height="100%" rx="16" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="20" y="20" width="460" height="200" rx="12" fill="#FFF9F5"/>
+  <g transform="translate(30, 85)">
+    <rect x="0" y="-35" width="440" height="8" fill="#9B2C2C"/>
+    <text x="220" y="20" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="900" fill="#9B2C2C" letter-spacing="2">THE ECONOMIC TIMES</text>
+    <rect x="0" y="32" width="440" height="3" fill="#9B2C2C"/>
+  </g>
+</svg>

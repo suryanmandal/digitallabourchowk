@@ -47,7 +47,11 @@ i[class*="fa-"], [class*="fa-"], .fa, .fas, .far, .fab, .fa-solid {
 i[class*="eicon-"], .eicon, [class*="eicon"] {
   font-family: "eicons" !important;
 }
-
+/* Service Card SVG Icon Sizing */
+.ct-service-card .elementor-icon svg {
+  width: 65px !important;
+  height: 65px !important;
+}
 /* ========================================================
    RESPONSIVE ELEMENTOR VISIBILITY GUARDS
    ======================================================== */
@@ -397,4 +401,119 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
   width: 100% !important;
   height: 100% !important;
+}
+
+/* Media Coverage & Collaborations Carousels */
+.elementor-widget-media-carousel .elementor-main-swiper {
+  position: relative !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.elementor-element-0cc8fe6 .elementor-main-swiper {
+  height: 220px !important;
+}
+
+.elementor-element-3e8d1fd .elementor-main-swiper {
+  height: 280px !important;
+}
+
+.elementor-element-d426b04 .elementor-main-swiper {
+  height: 140px !important;
+}
+
+.elementor-widget-media-carousel .swiper-slide {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.elementor-widget-media-carousel .elementor-carousel-image {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 120px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  display: block !important;
+}
+
+.elementor-element-0cc8fe6 .elementor-carousel-image {
+  min-height: 180px !important;
+}
+
+.elementor-element-3e8d1fd .elementor-carousel-image {
+  min-height: 240px !important;
+  border-radius: 12px;
+}
+
+.elementor-element-d426b04 .elementor-carousel-image {
+  min-height: 100px !important;
+  background-size: contain !important;
+}
+
+.elementor-widget-media-carousel .elementor-swiper-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.2s ease !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.elementor-widget-media-carousel .elementor-swiper-button-prev {
+  left: 10px !important;
+}
+
+.elementor-widget-media-carousel .elementor-swiper-button-next {
+  right: 10px !important;
+}
+
+.elementor-widget-media-carousel .elementor-swiper-button:hover {
+  background: #0C59D4 !important;
+}
+
+.elementor-widget-media-carousel .elementor-swiper-button svg {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #0A1E3F !important;
+  transition: fill 0.2s ease !important;
+}
+
+.elementor-widget-media-carousel .elementor-swiper-button:hover svg {
+  fill: #ffffff !important;
+}
+
+.elementor-widget-media-carousel .swiper-pagination {
+  position: relative !important;
+  margin-top: 15px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.elementor-widget-media-carousel .swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #CBD5E1 !important;
+  opacity: 1 !important;
+  margin: 0 4px !important;
+  cursor: pointer !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+.elementor-widget-media-carousel .swiper-pagination-bullet-active {
+  width: 24px !important;
+  border-radius: 4px !important;
+  background: #0C59D4 !important;
 }

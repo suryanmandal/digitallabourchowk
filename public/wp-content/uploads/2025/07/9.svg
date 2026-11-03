@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="500" height="240">
+  <rect width="100%" height="100%" rx="16" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="20" y="20" width="460" height="200" rx="12" fill="#FFFBEB"/>
+  <g transform="translate(55, 65)">
+    <circle cx="35" cy="35" r="35" fill="#D97706"/>
+    <text x="35" y="48" text-anchor="middle" font-family="'Poppins', sans-serif" font-size="36" font-weight="900" fill="#ffffff">प</text>
+    <text x="85" y="46" font-family="'Poppins', 'Noto Sans Devanagari', sans-serif" font-size="42" font-weight="800" fill="#B45309">पांचजन्य</text>
+    <text x="87" y="75" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#92400E" letter-spacing="3">PANCHJANYA</text>
+  </g>
+</svg>

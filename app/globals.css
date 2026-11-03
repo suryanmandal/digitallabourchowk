@@ -258,3 +258,143 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   width: 24px !important;
   border-radius: 9999px !important;
 }
+
+/* ========================================================
+   GLOBAL FOOTER UNIFIED COLOR & LEGIBILITY POLISH
+   ======================================================== */
+.ct-footer {
+  background-color: #0b132b !important; /* Unified dark navy background */
+  color: #ffffff !important;
+  --theme-text-color: #ffffff !important;
+  --theme-link-initial-color: #ffffff !important;
+  --theme-link-hover-color: #38bdf8 !important;
+}
+
+.ct-footer [data-row="middle"] {
+  background-color: #0b132b !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+.ct-footer [data-row="bottom"] {
+  background-color: #060c1c !important; /* Elegant darker tone for copyright row */
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Footer Navigation Links (widget-area-4 in screenshot) */
+.ct-footer [data-column="widget-area-4"] ul,
+.ct-footer [data-column="widget-area-4"] .wp-block-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.ct-footer [data-column="widget-area-4"] ul li,
+.ct-footer [data-column="widget-area-4"] .wp-block-list li {
+  list-style-type: none !important;
+  margin-bottom: 12px !important;
+}
+
+.ct-footer [data-column="widget-area-4"] ul li a,
+.ct-footer [data-column="widget-area-4"] .wp-block-list li a,
+.ct-footer [data-column="widget-area-4"] a {
+  color: #ffffff !important; /* Crisp, readable white */
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+  opacity: 0.9 !important;
+}
+
+.ct-footer [data-column="widget-area-4"] ul li a:hover,
+.ct-footer [data-column="widget-area-4"] .wp-block-list li a:hover,
+.ct-footer [data-column="widget-area-4"] a:hover {
+  color: #38bdf8 !important; /* Bright sky blue accent */
+  opacity: 1 !important;
+  transform: translateX(4px) !important;
+}
+
+/* Catch-all for any other links in footer */
+.ct-footer a {
+  color: #ffffff !important;
+  transition: color 0.2s ease, opacity 0.2s ease !important;
+}
+
+.ct-footer a:hover {
+  color: #38bdf8 !important;
+}
+
+/* Footer Description & Social Box (widget-area-1) */
+.ct-footer [data-column="widget-area-1"] p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.ct-footer [data-column="widget-area-1"] .ct-social-box a svg {
+  fill: #ffffff !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+}
+
+.ct-footer [data-column="widget-area-1"] .ct-social-box a:hover svg {
+  opacity: 0.85 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Footer Address & Contact Info (widget-area-3) */
+.ct-footer [data-column="widget-area-3"] h6,
+.ct-footer [data-column="widget-area-3"] .wp-block-heading {
+  color: #ffffff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  margin-bottom: 8px !important;
+}
+
+.ct-footer [data-column="widget-area-3"] p {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 16px !important;
+}
+
+.ct-footer [data-column="widget-area-3"] .contact-title {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.ct-footer [data-column="widget-area-3"] .contact-text a {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.ct-footer [data-column="widget-area-3"] .contact-text a:hover {
+  color: #38bdf8 !important;
+}
+
+.ct-footer [data-column="widget-area-3"] svg {
+  fill: #ffffff !important;
+}
+
+/* Footer Copyright row */
+.ct-footer-copyright,
+.ct-footer-copyright p {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+
+/* Video Player Thumbnail & Container Polish */
+.elementor-element-edd5fa5 .elementor-wrapper iframe {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  width: 100% !important;
+  height: 100% !important;
+}

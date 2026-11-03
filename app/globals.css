@@ -453,44 +453,86 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   background-size: contain !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button {
+.elementor-widget-media-carousel .elementor-swiper-button,
+.elementor-widget-testimonial-carousel .elementor-swiper-button,
+.elementor-widget-reviews .elementor-swiper-button {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   cursor: pointer !important;
   z-index: 10 !important;
-  width: 40px !important;
-  height: 40px !important;
+  width: 44px !important;
+  height: 44px !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
-  transition: all 0.2s ease !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(12, 89, 212, 0.2) !important;
+  box-shadow: 0 4px 14px rgba(12, 89, 212, 0.15) !important;
+  transition: all 0.25s ease !important;
   position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
+  font-size: 16px !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button-prev {
-  left: 10px !important;
+.elementor-widget-media-carousel .elementor-swiper-button-prev,
+.elementor-widget-testimonial-carousel .elementor-swiper-button-prev,
+.elementor-widget-reviews .elementor-swiper-button-prev {
+  left: 6px !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button-next {
-  right: 10px !important;
+.elementor-widget-media-carousel .elementor-swiper-button-next,
+.elementor-widget-testimonial-carousel .elementor-swiper-button-next,
+.elementor-widget-reviews .elementor-swiper-button-next {
+  right: 6px !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button:hover {
+.elementor-widget-media-carousel .elementor-swiper-button:hover,
+.elementor-widget-testimonial-carousel .elementor-swiper-button:hover,
+.elementor-widget-reviews .elementor-swiper-button:hover {
   background: #0C59D4 !important;
+  border-color: #0C59D4 !important;
+  box-shadow: 0 6px 20px rgba(12, 89, 212, 0.35) !important;
+  transform: translateY(-50%) scale(1.08) !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button svg {
+.elementor-widget-media-carousel .elementor-swiper-button svg,
+.elementor-widget-testimonial-carousel .elementor-swiper-button svg,
+.elementor-widget-reviews .elementor-swiper-button svg {
   width: 16px !important;
   height: 16px !important;
-  fill: #0A1E3F !important;
+  display: block !important;
+  fill: #0C59D4 !important;
   transition: fill 0.2s ease !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button:hover svg {
+.elementor-widget-media-carousel .elementor-swiper-button:hover svg,
+.elementor-widget-testimonial-carousel .elementor-swiper-button:hover svg,
+.elementor-widget-reviews .elementor-swiper-button:hover svg {
   fill: #ffffff !important;
+}
+
+/* Testimonials Carousel Polish */
+.elementor-widget-testimonial-carousel .swiper-wrapper {
+  align-items: stretch !important;
+}
+
+.elementor-widget-testimonial-carousel .swiper-slide {
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.elementor-widget-testimonial-carousel .elementor-testimonial {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.elementor-widget-testimonial-carousel .elementor-testimonial__content {
+  flex-grow: 1 !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .elementor-widget-media-carousel .swiper-pagination {

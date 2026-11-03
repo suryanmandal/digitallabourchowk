@@ -33,7 +33,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, mobile, email, city, workers, count } = body;
+    const { name, mobile, email, city, workers, count, subject, message, projects, company, company_type, source } = body;
 
     if (!name || !mobile) {
       return NextResponse.json(
@@ -44,21 +44,40 @@ export async function POST(request: Request) {
 
     const newLead = {
       id: "DLC-" + Math.floor(100000 + Math.random() * 900000),
-      name,
-      mobile,
-      email: email || "",
-      city: city || "Delhi NCR",
-      workers: workers || (body.projects && body.projects.length > 0 ? body.projects.join(", ") : "General Contractor"),
+      name: String(name).trim(),
+      mobile: String(mobile).trim(),
+      email: email ? String(email).trim() : "",
+      city: city ? String(city).trim() : "Delhi NCR",
+      workers: workers || (projects && projects.length > 0 ? projects.join(", ") : "General Inquiry"),
       count: count || "2-5 Workers",
-      company: body.company || "",
-      company_type: body.company_type || "",
-      source: body.source || "Website Inquiry",
+      company: company || "",
+      company_type: company_type || "",
+      subject: subject || "",
+      message: message || "",
+      projects: projects || [],
+      source: source || "Website Inquiry",
       timestamp: new Date().toISOString().replace("T", " ").substring(0, 19),
     };
 
+    // 1. Local JSON Storage (persists locally / on standard servers)
     const leads = getLeads();
     leads.unshift(newLead);
     saveLeads(leads);
+
+    // 2. Optional Cloud Integration (Google Sheets / Webhook / Zapier)
+    // If GOOGLE_SHEETS_WEBHOOK_URL or LEADS_WEBHOOK_URL is set in environment, forwards lead data automatically
+    const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || process.env.LEADS_WEBHOOK_URL;
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newLead),
+        });
+      } catch (webhookErr) {
+        console.error("External webhook forward error:", webhookErr);
+      }
+    }
 
     return NextResponse.json({
       success: true,

@@ -590,7 +590,8 @@ export default function SiteInitializer() {
             // Clean up any stale duplicate clones before initializing
             el.querySelectorAll(".swiper-slide-duplicate").forEach((dup) => dup.remove());
 
-            const instance = new window.Swiper(el, {
+            const paginationEl = el.querySelector<HTMLElement>(".swiper-pagination") || (widget ? widget.querySelector<HTMLElement>(".swiper-pagination") : null);
+            const singleOptions: any = {
               slidesPerView: 1,
               effect: "fade",
               fadeEffect: {
@@ -603,11 +604,14 @@ export default function SiteInitializer() {
                 pauseOnMouseEnter: true,
               },
               speed: Number(settings.speed) || 600,
-              pagination: {
-                el: el.querySelector(".swiper-pagination") || (widget ? widget.querySelector(".swiper-pagination") : null),
+            };
+            if (paginationEl) {
+              singleOptions.pagination = {
+                el: paginationEl,
                 clickable: true,
-              },
-            });
+              };
+            }
+            const instance = new window.Swiper(el, singleOptions);
             swiperInstances.push(instance);
           } else {
             // Multi-slide ticker (partner logos)
@@ -640,17 +644,25 @@ export default function SiteInitializer() {
         }
       });
 
-      // Media Carousel widgets (used on /for-collaboration and /media-coverage)
-      document.querySelectorAll<HTMLElement>(".elementor-widget-media-carousel").forEach((widget) => {
+      // Media, Testimonial & Review Carousel widgets
+      document.querySelectorAll<HTMLElement>(
+        ".elementor-widget-media-carousel, .elementor-widget-testimonial-carousel, .elementor-widget-reviews"
+      ).forEach((widget) => {
         try {
           const swiperEl = widget.querySelector<HTMLElement>(".elementor-main-swiper");
           if (!swiperEl || (swiperEl as any).swiper) {
             return;
           }
 
-          // Clean up stale duplicate clones and reset classes
+          // Clean up stale duplicate clones and reset classes / transform
           swiperEl.querySelectorAll(".swiper-slide-duplicate").forEach((dup) => dup.remove());
           swiperEl.classList.remove("swiper-initialized");
+
+          const wrapper = swiperEl.querySelector<HTMLElement>(".swiper-wrapper");
+          if (wrapper) {
+            wrapper.style.transform = "";
+            wrapper.style.transitionDuration = "";
+          }
 
           const rawSettings = widget.getAttribute("data-settings");
           let settings: any = {};
@@ -662,11 +674,11 @@ export default function SiteInitializer() {
 
           const defaultSlides = widget.getAttribute("data-id") === "d426b04" ? 5 : 3;
           const desktopSlides = Number(settings.slides_per_view) || defaultSlides;
-          const tabletSlides = Math.min(desktopSlides, 3);
-          const mobileSlides = Math.min(desktopSlides, 1);
+          const tabletSlides = desktopSlides >= 5 ? 3 : (desktopSlides >= 2 ? 2 : 1);
+          const mobileSlides = desktopSlides >= 5 ? 2 : 1;
 
           const rawSpacing = settings.space_between?.size !== undefined ? Number(settings.space_between.size) : 20;
-          const mobileSpacing = settings.space_between_mobile?.size !== undefined ? Number(settings.space_between_mobile.size) : 10;
+          const mobileSpacing = settings.space_between_mobile?.size !== undefined ? Number(settings.space_between_mobile.size) : 12;
 
           const prevBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-prev");
           const nextBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-next");
@@ -677,7 +689,7 @@ export default function SiteInitializer() {
             spaceBetween: rawSpacing,
             loop: settings.loop !== "no",
             autoplay: settings.autoplay === "no" ? false : {
-              delay: Number(settings.autoplay_speed) || 3500,
+              delay: Number(settings.autoplay_speed) || 4500,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             },
@@ -713,10 +725,9 @@ export default function SiteInitializer() {
           }
 
           const instance = new window.Swiper(swiperEl, swiperOptions);
-
           swiperInstances.push(instance);
         } catch (err) {
-          console.error("Media carousel Swiper init error:", err);
+          console.error("Carousel Swiper init error:", err);
         }
       });
     };
@@ -725,36 +736,130 @@ export default function SiteInitializer() {
     const swiperTimer2 = setTimeout(initSwipers, 600);
     const swiperTimer3 = setTimeout(initSwipers, 1200);
 
-    // I. LEAD FORM SUBMISSION TO /api/leads
+    // I. GENERAL & CONTACT FORM SUBMISSION TO /api/leads
     const forms = document.querySelectorAll<HTMLFormElement>("form:not(#projectApplyForm)");
     forms.forEach((form) => {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const name = (formData.get("full_name") || formData.get("name") || "") as string;
-        const mobile = (formData.get("mobile_number") || formData.get("mobile") || "") as string;
-        const city = (formData.get("state_city") || formData.get("city") || "") as string;
-        const workers = (formData.get("worker_type") || formData.get("workers") || "Mason") as string;
 
-        try {
-          await fetch("/api/leads", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, mobile, city, workers }),
-          });
-        } catch {
-          console.log("Lead captured");
+        // Extract names
+        const name = (
+          formData.get("names_1[first_name]") ||
+          formData.get("full_name") ||
+          formData.get("name") ||
+          form.querySelector<HTMLInputElement>('input[name*="name"], input[placeholder*="Name" i]')?.value ||
+          ""
+        ).toString().trim();
+
+        // Extract phone number
+        const mobile = (
+          formData.get("numeric_field") ||
+          formData.get("mobile_number") ||
+          formData.get("mobile") ||
+          form.querySelector<HTMLInputElement>('input[type="tel"], input[name*="mobile"], input[placeholder*="mobile" i], input[placeholder*="+91" i]')?.value ||
+          ""
+        ).toString().trim();
+
+        // Extract email
+        const email = (
+          formData.get("email") ||
+          form.querySelector<HTMLInputElement>('input[type="email"], input[name*="email"]')?.value ||
+          ""
+        ).toString().trim();
+
+        // Extract subject
+        const subject = (
+          formData.get("input_text") ||
+          formData.get("subject") ||
+          ""
+        ).toString().trim();
+
+        // Extract message
+        const message = (
+          formData.get("message") ||
+          form.querySelector<HTMLTextAreaElement>('textarea[name*="message"]')?.value ||
+          ""
+        ).toString().trim();
+
+        // Extract city/location
+        const city = (
+          formData.get("state_city") ||
+          formData.get("city") ||
+          "Delhi NCR"
+        ).toString().trim();
+
+        // Worker type / description
+        const workers = (
+          formData.get("worker_type") ||
+          formData.get("workers") ||
+          (subject ? `Inquiry: ${subject}` : "General Inquiry")
+        ).toString().trim();
+
+        const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"], input[type="submit"]');
+        const origBtnText = submitBtn?.innerText || submitBtn?.getAttribute("value") || "Submit";
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerText = "Submitting...";
         }
 
-        // Show thank you message
-        const successMsg = document.getElementById("successMessage");
-        if (successMsg) {
-          form.style.display = "none";
-          successMsg.classList.remove("hidden");
-          successMsg.style.display = "block";
-          try {
-            successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
-          } catch {}
+        try {
+          const res = await fetch("/api/leads", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              mobile,
+              email,
+              city,
+              workers,
+              subject,
+              message,
+              source: form.id === "fluentform_8" ? "Contact Us Page" : "Website Inquiry",
+            }),
+          });
+          const result = await res.json();
+
+          if (result.success) {
+            // Check for fluentform error/success alert container on contact page
+            const fluentErrors = document.getElementById("fluentform_8_errors");
+            if (fluentErrors) {
+              fluentErrors.innerHTML = `
+                <div style="background-color: #ecfdf5; border: 1.5px solid #10b981; color: #065f46; padding: 16px 20px; border-radius: 12px; margin-top: 18px; font-weight: 500; font-family: Poppins, sans-serif; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 12px rgba(16,185,129,0.15);">
+                  <svg style="width: 24px; height: 24px; color: #10b981; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                  <div>
+                    <strong style="display: block; font-size: 15px; color: #047857;">Thank you! Your message has been sent successfully.</strong>
+                    <span style="font-size: 13px; color: #065f46;">Reference ID: <strong>${result.lead?.id || "DLC"}</strong>. Our team will contact you shortly.</span>
+                  </div>
+                </div>
+              `;
+              form.reset();
+              try {
+                fluentErrors.scrollIntoView({ behavior: "smooth", block: "center" });
+              } catch {}
+            }
+
+            // Show generic thank you message if present
+            const successMsg = document.getElementById("successMessage");
+            if (successMsg) {
+              form.style.display = "none";
+              successMsg.classList.remove("hidden");
+              successMsg.style.display = "block";
+              try {
+                successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+              } catch {}
+            }
+          } else {
+            alert(result.message || "Please check your required details and try again.");
+          }
+        } catch (err) {
+          console.error("Lead submission error:", err);
+          alert("Submission error. Please verify your connection and try again.");
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerText = origBtnText;
+          }
         }
       });
     });

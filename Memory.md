@@ -1,115 +1,116 @@
-# Project Memory & Progress Log
+# Digital Labour Chowk (DLC) — System Memory & Operational Handbook
 
-## 1. What Has Been Completed
-
-### 100% Exact Hosted Site Replica on Next.js 15 (SSR + SEO)
-- **High-Fidelity Migration**: Successfully migrated the exact hosted website (`digitallabourchowk.com` / `extra data/dlcwebpage`) into an enterprise-grade **Next.js 15 + React 19 + TypeScript** frontend located in [`new_ui/`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui).
-- **Full Server-Side Rendering (SSR)**: All landing page content (hero, 19+ headings, 3-category pillar tabs, multi-stakeholder infographics, contractor/worker carousels, partner logo carousels, testimonials, FAQ accordions, and footer) is server-rendered on the initial HTTP response (`>600 KB` payload), guaranteeing 100% Googlebot SEO indexability and ultra-fast First Contentful Paint (FCP).
-- **Exact Styling & Assets**:
-  - Linked all 48 original production stylesheets (`global.css`, `elementor-frontend.min.css`, `style.min.css`, `post-1450.css`, `post-7492.css`, `post-3852.css`, `post-2036.css`, `post-2055.css`, `post-1038.css`, `post-2232.css`, `post-4095.css`, widget styles, fonts, animations, Font Awesome 6.5.1).
-  - Extracted all 15 missing Elementor widget stylesheets from MHTML archives (`widget-nested-accordion`, `widget-accordion`, `widget-icon-box`, `widget-google_maps`, `widget-star-rating`, `widget-reviews`, `widget-media-carousel`, `widget-call-to-action`, `widget-spacer`, `widget-posts`, `fluent-forms-public`, `fluentform-public-default`, `transitions`, `bootstrap`).
-  - Copied all 104+ original assets and image uploads to `new_ui/public/site_files/`, `new_ui/public/wp-content/`, and `new_ui/public/assets/`.
-- **Dynamic Client Hydration (`components/SiteInitializer.tsx`)**:
-  - Interactive role switcher tabs (`dlcSelectRole`).
-  - Searchable, category-filtered FAQ accordion (`toggleAccordion`, `setCategory`, `filterFAQs`).
-  - Contractor and worker profile card carousels with smooth translate animations and auto-play interval.
-  - Reviews and testimonials carousel with category filtering (`filterCategory`), slide pagination, and image zoom modal (`openModal`, `closeModal`).
-  - Partner logos carousel (`Swiper.js` initialization with responsive breakpoints).
-  - Background asynchronous lead form submission to `/api/leads` with instant success feedback.
-- **Subpage SSR Integration**:
-  - [`/`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/page.tsx): Main homepage (`public/raw_pages/home.html`).
-  - [`/about-us`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/about-us/page.tsx): Mission, vision, core metrics (`public/raw_pages/about-us.html`).
-  - [`/business`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/business/page.tsx): Dedicated contractor/enterprise workforce portal (`public/raw_pages/business.html`).
-  - [`/worker`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/worker/page.tsx): Blue-collar jobs portal (`public/raw_pages/worker.html`).
-  - [`/projects`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/projects/page.tsx): High-rise, township, and infra projects (`public/raw_pages/projects.html`).
-  - [`/contact`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/contact/page.tsx): Office coordinates and direct inquiry form (`public/raw_pages/contact.html`).
-  - [`/for-collaboration`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/for-collaboration/page.tsx): Media coverage and awards (`public/raw_pages/media-coverage.html`).
-  - [`/blogs`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/blogs/page.tsx): Construction blog hub (`public/raw_pages/blogs.html`).
-  - [`/onboarding`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/onboarding/page.tsx): Interactive multi-role contractor/worker login portal with OTP verification.
-- **WordPress Legacy URL Compatibility**:
-  - Configured Next.js rewrites in `next.config.ts` mapping legacy WordPress slugs (`/hire-skilled-construction-workers-delhi-ncr`, `/top-construction-jobs-delhi-ncr`, `/contact-us-2`, `/media-coverage`, `/top-construction-blog-digital-labour-chowk`) to their clean Next.js routes.
-- **Backend API & Admin Portal**:
-  - [`/api/leads`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/api/leads/route.ts): REST API (`GET`, `POST`) persisting contractor worker inquiries with unique IDs (`DLC-XXXXXX`) to `leads.json`.
-  - [`/admin/leads`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/app/admin/leads/page.tsx): Real-time CRM Leads Dashboard for dispatch coordinators.
-- **Documentation Suite (All 6 Mandated .md Files)**:
-  - [`Prd.md`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/Prd.md): What to build, targeted users, and core features.
-  - [`Architecture.md`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/Architecture.md): App flow, architecture, folder structure, and tech stack.
-  - [`Rules.md`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/Rules.md): Approved libraries, forbidden patterns, and AI boundaries.
-  - [`Phases.md`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/Phases.md): Phased roadmap (Phase 1 Auth -> Phase 2 Dashboard -> Phase 3-6).
-  - [`Design.md`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/Design.md): Brand colors (`#0C59D4`, `#10B981`, `#090D16`), typography, and responsiveness.
-  - [`Memory.md`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/Memory.md): Project status and file tracking.
-
-### Animation & Missing Content Resolution (Complete Fix)
-- **Root Cause Identified**:
-  1. *Missing Subpage Stylesheets*: Subpages (`about-us`, `business`, `worker`, `contact`, `for-collaboration`, `blogs`) and their widgets had missing `post-*.css` and `widget-*.css` stylesheets.
-  2. *Elementor Invisible Classes*: Six major sections in `home.html` (including the crucial "For Workers", "For Contractors", and "For Business" sections) had `class="elementor-invisible"` which sets `visibility: hidden;`. Because Elementor's client-side WordPress runtime scripts did not execute within React's `dangerouslySetInnerHTML`, these sections remained permanently invisible.
-  3. *Background Image Lazyload Suppression*: An Elementor CSS rule in `elementor-custom.css` stripped background images from unhydrated containers (`background-image: none !important;`).
-  4. *Counters Stuck at 0*: Metric counters (`Registered Workers: 350,000`, `Trusted Contractors: 20,000`, `Big Construction Companies: 50`, `Cities: 100/6,000`) had initial HTML text `0` with `data-to-value` attributes waiting for a counter script.
-  5. *Reviews Carousel Statically Offset*: `#carousel-track` had `transform: translateX(-886px)` hardcoded in static HTML, causing weird offsets on page load.
-- **Fixes Applied**:
-  1. *Removed `elementor-invisible` from SSR HTML*: All main content sections are now 100% visible immediately upon server rendering for instant display and search crawler indexing.
-  2. *Universal Entrance Animation Controller*: Built an IntersectionObserver in `SiteInitializer.tsx` that dynamically triggers `fadeInUp`, `fadeInLeft`, `fadeInRight`, and `fadeIn` animations with custom `animationDelay` as elements scroll into view.
-  3. *Universal Counter Numerator Animation*: Built an IntersectionObserver in `SiteInitializer.tsx` that animates numbers from `0` to `data-to-value` using ease-out cubic interpolation with US/Indian comma formatting.
-  4. *Removed Background Suppression*: Stripped the destructive `background-image: none !important;` rule from `elementor-custom.css` and added `.e-lazyloaded` activation.
-  5. *Linked All 15 Missing Widget Stylesheets*: Added `post-3852.css`, `post-2036.css`, `post-2055.css`, `post-1038.css`, `post-2232.css`, `post-4095.css`, `widget-nested-accordion`, `widget-accordion`, `widget-icon-box`, `widget-google_maps`, `widget-star-rating`, `widget-reviews`, `widget-media-carousel`, `widget-call-to-action`, `widget-spacer`, `widget-posts`, `fluent-forms-public`, `styles-D2XNMLLX.css`, and Font Awesome 6.5.1 in `layout.tsx`.
-  6. *Projects & Worker Asset Linking*: Linked `/projects/assets/` to `/assets/`, removed stale modulepreloads, and resolved image 404s.
-
-### Projects Page Full Restoration & Interactive Hub (`/projects`)
-- **Top Navigation Headerbar Integration**: Injected the official Blocksy site header (`#header.ct-header`) with sticky scrolling, desktop navigation with active indicator (`current-menu-item`) on "Projects", "Join us" CTA button, and mobile offcanvas drawer into [`public/raw_pages/projects.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/public/raw_pages/projects.html), ensuring seamless visual and functional continuity with all other pages.
-- **Component Styles Extraction & Scoping**: Extracted all 3 missing Angular component stylesheets (21,103 chars) from MHTML archives into [`public/site_files/projects-components.css`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/public/site_files/projects-components.css) and linked in `layout.tsx`, scoping generic elements to `.projects-page-wrapper` to prevent style leakage.
-- **Dynamic 5-Facet Project Filter**: Built real-time client-side filtering in [`components/SiteInitializer.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/components/SiteInitializer.tsx) across `Project type`, `Work type`, `Company`, `Work`, and `State`. Updates live count badge (`#projects-count`), displays `#no-projects-msg` when 0 results match, and provides a 1-click Reset button.
-- **Card Selection & Badges**: Implemented interactive card selection toggling (`✓ Selected`), updating `#selected-projects-box` in the application sidebar with count badge and removable chips (`window.removeSelectedProject`, `window.clearSelectedProjects`).
-- **Contractor Application Form**: Connected `#projectApplyForm` to `/api/leads` with name & 10-digit mobile validation, sending company, company type, and selected projects array. Displays an instant in-page confirmation banner (`#project-apply-success`).
-- **Banner Carousel Auto-Rotation**: Added smooth auto-cycling for desktop and mobile project banner carousels every 3500ms.
-- **Image Fallback Fix**: Replaced 16 broken `src="/projects/"` image paths with official company logo assets (`/projects/assets/images/logo-blue.png`).
-
-### Git Repository & GitHub Remote Hosting
-- **Repository Initialized**: Initialized a clean Git repository on branch `main` directly in [`dlc_website/`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website).
-- **GitHub Origin Configured**: Linked remote `origin` to [`https://github.com/suryanmandal/digitallabourchowk.git`](https://github.com/suryanmandal/digitallabourchowk.git).
-- **Codebase Pushed**: Successfully committed (1,372 files, 131,625 lines) and pushed all production source code, assets, documentation, and configuration files to GitHub `main` branch.
-- **Up to Date**: Working tree is 100% clean and fully synchronized with GitHub `origin/main`.
-
-### Ready for Hosting (Archive Removed)
-- **Archive Cleaned**: Permanently deleted the 235 MB `_archive/` directory per user confirmation, leaving the repository completely clean, lightweight, and optimized for production deployment on platforms like Vercel, AWS Amplify, Docker, or VPS.
-- **Production Verification**: Production build (`npm run build`) passed in ~1.1s with 100% static page generation across all 14 routes.
-- **Active Dev Server**: Actively running at `http://localhost:3000`.
-
-### Directory Cleanup & Promotion to Root (`dlc_website/`)
-- **Root Directory Cleanup**: Safely moved all 57 legacy WordPress theme files, PHP scripts, and extra data dumps into a dedicated [`_archive/`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/_archive) directory, preserving all legacy code and assets without cluttering the project root.
-- **Frontend Code Promotion**: Promoted all Next.js 15 frontend files, TypeScript source, configs, documentation, and public assets from `new_ui/` directly into the project root [`dlc_website/`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website), eliminating the nested subfolder completely.
-- **Project Configuration**: Added root [`.gitignore`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/.gitignore) ignoring `_archive/`, `node_modules/`, and `.next/`. Renamed package to `dlc-website`.
-- **Self-Contained Public Assets**: Ensured all theme assets, component CSS, and company images are stored directly in `public/` with no external dependencies.
-
-### SPA Client-Side Routing / Soft Navigation (Zero-Refresh Transitions)
-- **Problem Solved**: Resolved full-page browser reloads when clicking internal links inside server-rendered HTML.
-- **Global Link Interception**: Implemented delegated click interception in [`components/SiteInitializer.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/new_ui/components/SiteInitializer.tsx) that catches internal link clicks, normalizes paths, prevents default hard navigation, and invokes Next.js `router.push()` for seamless, instant, zero-refresh transitions.
-- **Zero-Latency Hover Prefetching**: Added `router.prefetch()` on mouseover/touch to load destination routes in background memory prior to click.
-- **Reactive DOM Re-Hydration**: Configured `usePathname()` observer to instantly reset scroll to top, close mobile offcanvas drawer, update menu active pills (`current-menu-item`), and re-bind all carousels, FAQ accordions, and forms across page changes.
-
-### React 19 Hydration Mismatch Resolution Across Subpages
-- Replaced outer `<main>` wrappers across all 9 routes with `<div id="content" className="site-content" suppressHydrationWarning>`.
-- Removed hardcoded device mode attribute from `layout.tsx` `<body>`.
-- Removed legacy third-party Yandex Metrika `<noscript>` tracking pixel on line 3 of `home.html`.
-- Cleaned up line 382 in `about-us.html` where an export artifact recursively dumped another `<main>` and `<footer>` inside an accordion panel.
-- Result: Zero hydration mismatch errors across all pages (`/`, `/about-us`, `/business`, `/worker`, `/projects`, `/contact`, `/for-collaboration`, `/blogs`, `/onboarding`).
-
-### Build Verification
-- Production build (`npm run build`) runs cleanly with 100% compilation across all 14 routes.
-- Next.js development server is actively running on `http://localhost:3000`.
+> **AGENT SPEED PROTOCOL (CRITICAL — READ FIRST)**:
+> 1. **Do NOT run blind grep or wide directory scans**: Consult the **Site Map & File Directory** below first.
+> 2. **Targeted Edits**: Only open and edit the specific file mapped to the requested feature.
+> 3. **Avoid Unnecessary Full Builds**: Do not run `npm run build` for minor HTML/CSS tweaks unless verifying complex TypeScript changes.
+> 4. **Keep Responses Concise**: Explain the fix directly without re-summarizing unchanged code.
+> 5. **Update This File**: When significant features or fixes are completed, record them in the **Changelog** section.
 
 ---
 
-## 2. Which File Is Currently Being Worked On
+## 1. Quick Technical Reference
 
-- Current active server: `http://localhost:3000` (serving root `dlc_website/`).
-- Core files:
-  - [`app/layout.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/layout.tsx)
-  - [`app/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/page.tsx)
-  - [`components/SiteInitializer.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/components/SiteInitializer.tsx)
-  - [`next.config.ts`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/next.config.ts)
+- **Framework**: Next.js 15.5.28 (App Router, Webpack) + React 19 + TypeScript + Tailwind CSS
+- **Architecture Pattern**: Hybrid Server-Side Rendered (SSR) HTML with Client-Side Hydration
+  - Server components load raw HTML files via `fs.readFileSync` with `suppressHydrationWarning`.
+  - [`components/SiteInitializer.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/components/SiteInitializer.tsx) handles all client-side hydration: SPA link routing, Swiper carousels, FAQ accordions, counters, and form submission listeners.
+- **Brand Colors**:
+  - Primary Blue: `#0C59D4`
+  - Deep Navy / Footer Background: `#090D16` / `#0A1E3F`
+  - Emerald Green: `#10B981`
+  - Slate Backgrounds: `#F8FAFC` / `#0B132B`
+- **Typography**: `Poppins, sans-serif` universally enforced across all components, headings, and metric counters.
+- **Dev Server**: `http://localhost:3000`
+- **Git Remote**: `https://github.com/suryanmandal/digitallabourchowk.git` (Branch: `main`)
 
 ---
 
-## 3. Maintenance Instruction
+## 2. Complete Site Map & File Index
 
-> **CRITICAL INSTRUCTION**: Update this `Memory.md` file regularly at the conclusion of each development sprint or phase so the project team never loses track of progress, architecture changes, and active files.
+| Route | Page Component | Raw HTML Template | Main Features / Widgets |
+| :--- | :--- | :--- | :--- |
+| **`/`** (Home) | [`app/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/page.tsx) | [`public/raw_pages/home.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/home.html) & [`public/home_body.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/home_body.html) | Hero buttons, Video showcase, Partner logos ticker, Impact numbers, Voices from the Community carousel, FAQ accordion. |
+| **`/about-us`** | [`app/about-us/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/about-us/page.tsx) | [`public/raw_pages/about-us.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/about-us.html) | Mission/Vision, Leadership, Partner Logos swiper (`d1861b9`), Core metrics. |
+| **`/business`** | [`app/business/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/business/page.tsx) | [`public/raw_pages/business.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/business.html) | Enterprise hiring, Metric stats (`300,000+`, `10+`), Client logos carousel, Reviews carousel (`1cefe1ab`), Video player. |
+| **`/worker`** | [`app/worker/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/worker/page.tsx) | [`public/raw_pages/worker.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/worker.html) | Blue-collar job opportunities, YouTube explainer video with autoplay, Job category cards, Stat counters. |
+| **`/projects`** | [`app/projects/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/projects/page.tsx) | [`public/raw_pages/projects.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/projects.html) | 5-facet Project Filter, Contractor Application Form (`#projectApplyForm`), Card selection toggling. |
+| **`/contact`** | [`app/contact/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/contact/page.tsx) | [`public/raw_pages/contact.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/contact.html) | Contact Form (`#fluentform_8`), Google Maps iframe, Office details, FAQ accordion. |
+| **`/for-collaboration`** | [`app/for-collaboration/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/for-collaboration/page.tsx) | [`public/raw_pages/media-coverage.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/media-coverage.html) | Media coverage carousels, Press releases, Awards gallery. |
+| **`/blogs`** | [`app/blogs/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/blogs/page.tsx) | [`public/raw_pages/blogs.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/blogs.html) | Industry blog articles, Guides, Construction hiring insights. |
+| **`/onboarding`** | [`app/onboarding/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/onboarding/page.tsx) | [`public/raw_pages/onboarding.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/onboarding.html) | Multi-role user registration / login portal. |
+| **`/admin/leads`** | [`app/admin/leads/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/admin/leads/page.tsx) | N/A (React Client Component) | Real-time CRM Dashboard: view leads, search filter, 1-click CSV download. |
+| **`/api/leads`** | [`app/api/leads/route.ts`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/api/leads/route.ts) | N/A (Next.js REST Route) | `POST` / `GET` leads; writes to `leads.json` and optionally forwards to Google Sheets webhook. |
+
+---
+
+## 3. Data Storage Architecture (Forms & Leads)
+
+### Current Flow
+1. **Frontend Submission**:
+   - `contact.html` (`#fluentform_8`) captures name, phone, email, subject, and message.
+   - `projects.html` (`#projectApplyForm`) captures name, phone, company, type, and selected projects.
+   - Any general booking form posts to `/api/leads`.
+2. **API Handler ([`app/api/leads/route.ts`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/api/leads/route.ts))**:
+   - Assigns a unique tracking ID: `DLC-XXXXXX`.
+   - Records UTC timestamp, contact info, role, source page, and message.
+   - Prepends lead to [`leads.json`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/leads.json) in the project root.
+3. **Admin Dashboard ([`app/admin/leads/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/admin/leads/page.tsx))**:
+   - Accessible at `http://localhost:3000/admin/leads`.
+   - Search across all leads by name, phone, city, or source.
+   - **Export CSV**: 1-click download of all records into an Excel-compatible `.csv` file.
+
+### Cloud / Production Persistence (Google Sheets Integration)
+Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/route.ts`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/api/leads/route.ts) includes webhook support. To mirror all leads directly into Google Sheets:
+1. Deploy a Google Apps Script Web App on a Google Sheet.
+2. Add the URL to `.env.local`:
+   ```env
+   GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
+   ```
+3. Every submission will automatically append a new row in Google Sheets in real-time.
+
+---
+
+## 4. Completed Fixes & Engineering History
+
+### A. Voices from the Community Testimonial Carousel
+- **Location**: `public/raw_pages/home.html` & `public/home_body.html` (`2e4a130b`, `.elementor-widget-testimonial-carousel`).
+- **Fix**: Removed static duplicate slides; added swiper initialization in [`components/SiteInitializer.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/components/SiteInitializer.tsx) with autoplay (4.5s delay), pause on hover, infinite loop, and responsive breakpoints (3 desktop, 2 tablet, 1 mobile).
+- **Styling**: Overrode `font-size: 0px` on navigation buttons in [`app/globals.css`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/globals.css) with circular blue-hover buttons (`#0C59D4`).
+
+### B. Contact Us & Project Forms Overhaul
+- **Location**: `public/raw_pages/contact.html`, `public/raw_pages/projects.html`, `app/api/leads/route.ts`.
+- **Fix**: Corrected field name extraction for FluentForm (`names_1[first_name]`, `numeric_field`, `input_text`, `message`). Added in-page confirmation banner with reference ID. Enabled CSV export and search filtering on `/admin/leads`.
+
+### C. Hero Buttons Alignment & Dimensions
+- **Location**: `public/raw_pages/home.html` & `public/home_body.html`.
+- **Fix**: Standardized dimensions for the 3 hero action buttons (`Find Contractors`, `Find Workers / Projects`, `Find Verified Jobs`) to `min-width: 195px; max-width: 215px; height: 48px`, aligned left.
+
+### D. Metric Stat Numbers Typography
+- **Location**: `business.html`, `worker.html`, `contact.html`, and `app/globals.css`.
+- **Fix**: Numbers (`300,000+`, `10+`, `12,000+`, `10,000+`) styled in bold pure white (`#ffffff`, `font-weight: 700`), labels in normal white (`#ffffff`, `font-weight: 400`).
+
+### E. Video Framing & Autoplay
+- **Worker Page Video** (`worker.html`): Replaced remote YouTube thumbnail with high-res local asset (`/wp-content/uploads/2026/03/Youtube-Thumbnail.jpg`), enabled autoplay parameters (`autoplay=1&mute=1&playsinline=1`), and eliminated black bar framing.
+- **Home Video** (`home.html`): Configured `autoplay`, `muted`, `loop`, `playsinline` attributes.
+
+### F. Google Maps Display
+- **Location**: `public/raw_pages/contact.html`.
+- **Fix**: Replaced broken Elementor iframe placeholder with responsive Google Maps embed showing Digital Labour Chowk's official registered office.
+
+### G. Media Coverage Carousel Recovery
+- **Location**: `public/raw_pages/media-coverage.html`.
+- **Fix**: Restored missing image carousels (`d426b04`, `3e8d1fd`, `8fa8043`), reconnected local media assets, and added dynamic Swiper bindings.
+
+### H. About Us Carousel Flash Resolution
+- **Location**: `components/SiteInitializer.tsx` & `app/globals.css`.
+- **Fix**: Resolved flash-and-disappear bug by stripping stale duplicate clones and ensuring `pagination` option is never passed with a `null` or `undefined` DOM element.
+
+---
+
+## 5. Working Rules for Future Tasks
+
+1. **Check this file first**: Always verify if a component has an existing fix or specific styling rule documented here.
+2. **Poppins Font Family**: Any new text, button, or card must adhere to `font-family: Poppins, sans-serif`.
+3. **Swiper Initialization Rule**: Always check `if (prevBtn && nextBtn)` and `if (paginationEl)` before adding them to `new window.Swiper()`. Never pass `undefined` to Swiper options.
+4. **Link Routing Rule**: Internal hyperlinks must point to clean Next.js paths (e.g., `/business`, `/worker`, `/contact`) so delegated client-side SPA routing functions seamlessly.

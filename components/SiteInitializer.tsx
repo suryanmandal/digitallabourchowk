@@ -555,35 +555,95 @@ export default function SiteInitializer() {
       });
     }
 
-    // H. PARTNER LOGOS SWIPER INITIALIZATION
+    // H. CAROUSEL & PARTNER LOGOS SWIPER INITIALIZATION
+    const swiperInstances: any[] = [];
     const initSwipers = () => {
-      if (typeof window.Swiper !== "undefined") {
-        document.querySelectorAll(".elementor-image-carousel-wrapper").forEach((el) => {
-          try {
-            new window.Swiper(el, {
-              slidesPerView: 5,
-              spaceBetween: 64,
+      if (typeof window.Swiper === "undefined") {
+        return;
+      }
+
+      document.querySelectorAll<HTMLElement>(".elementor-image-carousel-wrapper").forEach((el) => {
+        try {
+          // If already initialized on this DOM element, don't re-initialize
+          if ((el as any).swiper) {
+            return;
+          }
+
+          const widget = el.closest<HTMLElement>(".elementor-widget-image-carousel");
+          const rawSettings = widget?.getAttribute("data-settings");
+          let settings: any = {};
+          if (rawSettings) {
+            try {
+              settings = JSON.parse(rawSettings);
+            } catch (e) {
+              // fallback
+            }
+          }
+
+          const isSingleSlide =
+            settings.slides_to_show === "1" ||
+            settings.effect === "fade" ||
+            widget?.getAttribute("data-id") === "d1861b9" ||
+            el.closest(".elementor-element-d1861b9") !== null;
+
+          if (isSingleSlide) {
+            // Clean up any stale duplicate clones before initializing
+            el.querySelectorAll(".swiper-slide-duplicate").forEach((dup) => dup.remove());
+
+            const instance = new window.Swiper(el, {
+              slidesPerView: 1,
+              effect: "fade",
+              fadeEffect: {
+                crossFade: true,
+              },
               loop: true,
               autoplay: {
-                delay: 2000,
+                delay: Number(settings.autoplay_speed) || 4500,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
               },
-              speed: 800,
-              breakpoints: {
-                320: { slidesPerView: 2, spaceBetween: 24 },
-                640: { slidesPerView: 3, spaceBetween: 36 },
-                1024: { slidesPerView: 5, spaceBetween: 64 },
+              speed: Number(settings.speed) || 600,
+              pagination: {
+                el: el.querySelector(".swiper-pagination") || (widget ? widget.querySelector(".swiper-pagination") : null),
+                clickable: true,
               },
             });
-          } catch {
-            // Swiper fallback
+            swiperInstances.push(instance);
+          } else {
+            // Multi-slide ticker (partner logos)
+            const desktopSlides = Number(settings.slides_to_show) || 5;
+            const tabletSlides = Number(settings.slides_to_show_tablet) || 3;
+            const mobileSlides = Number(settings.slides_to_show_mobile) || 2;
+            const spacing = settings.image_spacing_custom?.size ? Number(settings.image_spacing_custom.size) : 64;
+            const mobileSpacing = settings.image_spacing_custom_mobile?.size ? Number(settings.image_spacing_custom_mobile.size) : 24;
+
+            const instance = new window.Swiper(el, {
+              slidesPerView: desktopSlides,
+              spaceBetween: spacing,
+              loop: true,
+              autoplay: {
+                delay: Number(settings.autoplay_speed) || 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              },
+              speed: Number(settings.speed) || 800,
+              breakpoints: {
+                320: { slidesPerView: mobileSlides, spaceBetween: mobileSpacing },
+                640: { slidesPerView: tabletSlides, spaceBetween: 36 },
+                1024: { slidesPerView: desktopSlides, spaceBetween: spacing },
+              },
+            });
+            swiperInstances.push(instance);
           }
-        });
-      }
+        } catch (err) {
+          console.error("Swiper init error:", err);
+        }
+      });
     };
 
-    setTimeout(initSwipers, 300);
-    setTimeout(initSwipers, 1000);
+    const swiperTimer1 = setTimeout(initSwipers, 150);
+    const swiperTimer2 = setTimeout(initSwipers, 600);
+    const swiperTimer3 = setTimeout(initSwipers, 1200);
 
     // I. LEAD FORM SUBMISSION TO /api/leads
     const forms = document.querySelectorAll<HTMLFormElement>("form:not(#projectApplyForm)");
@@ -901,6 +961,14 @@ export default function SiteInitializer() {
 
     return () => {
       clearTimeout(revealTimeout);
+      clearTimeout(swiperTimer1);
+      clearTimeout(swiperTimer2);
+      clearTimeout(swiperTimer3);
+      swiperInstances.forEach((inst) => {
+        try {
+          inst.destroy(true, true);
+        } catch {}
+      });
       clearInterval(autoplayTimer);
       if (projectCarouselInterval) clearInterval(projectCarouselInterval);
       animationObserver.disconnect();

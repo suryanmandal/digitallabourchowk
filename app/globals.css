@@ -206,3 +206,55 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
 .animate-pulse-subtle {
   animation: pulse-subtle 3s infinite ease-in-out;
 }
+
+/* ========================================================
+   IMAGE CAROUSEL & ABOUT-US SWIPER POLISH
+   ======================================================== */
+.elementor-widget-image-carousel .swiper-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.elementor-widget-image-carousel .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* Ensure fade carousel active slides are visible */
+.elementor-image-carousel-wrapper.swiper-fade .swiper-slide-active,
+.elementor-image-carousel-wrapper.swiper-fade .swiper-slide-active img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Modern pagination dots for About Us carousel */
+.elementor-element-d1861b9 .swiper-pagination {
+  position: relative !important;
+  margin-top: 16px !important;
+  bottom: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.elementor-element-d1861b9 .swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #94a3b8 !important;
+  opacity: 0.5 !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+}
+
+.elementor-element-d1861b9 .swiper-pagination-bullet-active {
+  background: #0C59D4 !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 9999px !important;
+}

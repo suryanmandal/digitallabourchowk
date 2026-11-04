@@ -106,6 +106,18 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
 - **Location**: `components/SiteInitializer.tsx` & `app/globals.css`.
 - **Fix**: Resolved flash-and-disappear bug by stripping stale duplicate clones and ensuring `pagination` option is never passed with a `null` or `undefined` DOM element.
 
+### I. Favicon Branding
+- **Location**: `app/layout.tsx`, `public/favicon.ico`, `public/favicon.png`, `app/icon.png`.
+- **Fix**: Replaced generic logo with official high-res DLC emblem (`200x200` PNG) with multi-format support (`ico`, `png`, Apple touch icon).
+
+### J. "Numbers That Speak" Mobile Overlap & Repetition Fix
+- **Location**: `app/globals.css`.
+- **Fix**: Scoped `.elementor-element-3d0a2f97` (desktop 4-column counter grid) strictly to `@media (min-width: 1025px)` and explicitly set `display: none !important;` on screens `≤ 1024px`. This prevents the desktop grid from rendering below the vertical mobile counters on phone view, completely eliminating repeated numbers and horizontal crushing/overlapping.
+
+### K. "Still have questions?" CTA Card Centering & Vertical Stacking
+- **Location**: `public/raw_pages/home.html` & `public/home_body.html`.
+- **Fix**: Re-centered the blue gradient card (`w-full max-w-2xl mx-auto`), centered all heading and paragraph text (`text-center`), moved the "Contact Support" button from the side to directly below the text, and removed the redundant duplicate container (`baa0256`). Standardized responsive layout on both desktop and mobile.
+
 ---
 
 ## 5. Working Rules for Future Tasks

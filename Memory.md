@@ -116,7 +116,7 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
 
 ### K. "Still have questions?" CTA Card Centering & Vertical Stacking
 - **Location**: `public/raw_pages/home.html` & `public/home_body.html`.
-- **Fix**: Re-centered the blue gradient card (`w-full max-w-2xl mx-auto`), centered all heading and paragraph text (`text-center`), moved the "Contact Support" button from the side to directly below the text, and removed the redundant duplicate container (`baa0256`). Standardized responsive layout on both desktop and mobile.
+- **Fix**: Restored `elementor-element-baa0256` container. Enforced centering on both outer wrapper and inner container (`display: flex; justify-content: center; align-items: center; width: 100%; margin: 2.5rem auto 1.5rem auto;`). Inside the card, centered all headings and paragraphs (`text-center`, `max-w-lg mx-auto`), stacked the "Contact Support" button directly below the text (`flex justify-center w-full mt-2`), and standardized responsiveness (`w-full max-w-2xl sm:max-w-3xl`) across desktop and phone views.
 
 ---
 

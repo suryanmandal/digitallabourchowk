@@ -135,20 +135,38 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   display: flex !important;
 }
 
-/* Desktop 4-column Impact Grid Polish */
-.elementor-element-3d0a2f97 {
-  display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 16px !important;
-  width: 100% !important;
-  margin-top: 40px !important;
+/* Desktop 4-column Impact Grid Polish (STRICTLY DESKTOP >= 1025px) */
+@media (min-width: 1025px) {
+  .elementor-element-3d0a2f97 {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 40px !important;
+  }
+
+  .elementor-element-3d0a2f97 > div {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px 6px !important;
+  }
 }
 
-.elementor-element-3d0a2f97 > div {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 12px 6px !important;
+/* Explicitly hide the desktop impact grid on mobile and tablet to prevent repeating/overlapping */
+@media (max-width: 1024px) {
+  .elementor-element-3d0a2f97,
+  .elementor-element.elementor-element-3d0a2f97 {
+    display: none !important;
+  }
+
+  /* Clean vertical spacing for mobile impact counters */
+  .elementor-element-68a0b2,
+  .elementor-element-4d649789,
+  .elementor-element-39e84516,
+  .elementor-element-68537fdc {
+    margin-bottom: 28px !important;
+  }
 }
 
 /* About Us Stats Highlight Banner (3 Lakhs+, 15,000+, 850+, 200+) */

@@ -7,7 +7,12 @@ export const metadata: Metadata = {
   description:
     "Digital Labour Chowk connects contractors with skilled construction workers across India. Find reliable labour for your construction projects with ease.",
   icons: {
-    icon: "/site_files/logo-tm.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/favicon.png",
+    shortcut: "/favicon.png",
   },
 };
 
@@ -20,6 +25,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         
         {/* Google Fonts: Poppins (Weights: 300, 400, 500, 600, 700, 800, 900) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

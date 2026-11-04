@@ -122,6 +122,17 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
 - **Location**: `public/raw_pages/home.html` & `public/home_body.html`.
 - **Details**: Preserved user's custom inline styles (`font-size: 1em !important; font-weight: inherit !important; vertical-align: baseline;`) on colored heading spans to maintain uniform text boldness across all display sizes. Synchronized across both files and committed (`commit 0b65c3a`).
 
+### M. Direct Routing for Projects Portal
+- **Location**: `app/projects/page.tsx`, `next.config.ts`, `components/SiteInitializer.tsx`, and raw HTML headers/footers.
+- **Details**: Replaced internal `/projects` route with direct routing to official DLC external portal `https://jobs.dlc.org.in/projects`. Handled at Next.js server redirect level (307 redirect), client navigation level in `SiteInitializer`, and in all header/footer HTML hyperlinks.
+
+### N. Unified Admin Dashboard & Blog Control Desk
+- **Location**: `app/admin/layout.tsx`, `app/admin/page.tsx`, `app/admin/blogs/page.tsx`, `app/api/blogs/route.ts`, `data/blogs.json`, and `app/admin/leads/page.tsx`.
+- **Details**: Built an enterprise-grade DLC Command Hub with unified sidebar navigation:
+  - **Overview (`/admin`)**: Real-time KPI metrics (Total leads, Published blogs, Jobs & Projects status), latest inquiries, and content control.
+  - **Leads & CRM (`/admin/leads`)**: Full CRM with search, source filtering, CSV export, and 1-click WhatsApp messaging (`https://wa.me/91...`).
+  - **Blog Control Desk (`/admin/blogs`)**: Full CRUD publishing system (Create, Edit, Delete, Draft/Publish toggling, image presets, tags, reading time, and preview). Backed by REST API (`/api/blogs`) and structured `data/blogs.json`.
+
 ---
 
 ## 5. Working Rules for Future Tasks

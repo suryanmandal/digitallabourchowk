@@ -7,6 +7,20 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   outputFileTracingRoot: path.resolve(__dirname),
+  async redirects() {
+    return [
+      {
+        source: "/projects",
+        destination: "https://jobs.dlc.org.in/projects",
+        permanent: false,
+      },
+      {
+        source: "/projects/:path*",
+        destination: "https://jobs.dlc.org.in/projects",
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

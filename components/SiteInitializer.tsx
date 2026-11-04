@@ -61,6 +61,12 @@ function normalizeInternalPath(href: string): string | null {
   let clean = path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
 
   // Slug aliases from legacy WordPress
+  if (clean === "/projects") {
+    if (typeof window !== "undefined") {
+      window.location.href = "https://jobs.dlc.org.in/projects";
+    }
+    return null;
+  }
   if (clean === "/about") return "/about-us";
   if (clean === "/hire-construction-workers-business") return "/business";
   if (clean === "/hire-skilled-construction-workers-delhi-ncr") return "/business";

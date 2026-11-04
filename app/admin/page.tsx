@@ -82,9 +82,9 @@ export default function AdminDashboardPage() {
   const recentBlogs = blogs.slice(0, 4);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-10 max-w-7xl mx-auto space-y-8">
-      {/* Top Banner / Welcome Bar */}
-      <div className="bg-gradient-to-r from-slate-900 via-[#0A1E3F] to-[#0C59D4] rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+    <div className="admin-content-inner">
+      {/* Top Banner / Welcome Bar (DIV 1) */}
+      <div className="admin-div-banner bg-gradient-to-r from-slate-900 via-[#0A1E3F] to-[#0C59D4] rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
         <div className="absolute right-0 top-0 bottom-0 w-96 bg-radial from-white/10 to-transparent pointer-events-none" />
         
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -93,11 +93,11 @@ export default function AdminDashboardPage() {
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>Digital Labour Chowk Central Operations</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight">
               Platform Overview & Command Hub
             </h1>
-            <p className="text-blue-100/80 text-sm max-w-xl">
-              Monitor incoming customer leads, dispatch worker inquiries, manage industry blogs, and oversee company projects.
+            <p className="text-blue-100/80 text-sm max-w-2xl leading-relaxed">
+              Monitor incoming customer leads, dispatch worker inquiries, manage industry blogs, and oversee company projects across India.
             </p>
           </div>
 
@@ -105,14 +105,14 @@ export default function AdminDashboardPage() {
             <button
               onClick={loadData}
               disabled={loading}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition backdrop-blur-md active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition backdrop-blur-md active:scale-95 cursor-pointer"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
               <span>Refresh</span>
             </button>
             <Link
               href="/admin/blogs?action=new"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#0C59D4] hover:bg-blue-50 text-xs sm:text-sm font-bold shadow-lg transition active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#0C59D4] hover:bg-blue-50 text-xs sm:text-sm font-bold shadow-lg transition active:scale-95"
             >
               <PlusCircle className="w-4 h-4" />
               <span>New Blog Post</span>
@@ -121,10 +121,10 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* KPI Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {/* Total Leads */}
-        <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
+      {/* KPI Stat Cards (DIVS 2, 3, 4, 5) */}
+      <div className="admin-div-kpi-grid">
+        {/* Total Leads (DIV 2) */}
+        <div className="admin-kpi-card bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total Leads</span>
             <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0C59D4] flex items-center justify-center">
@@ -149,8 +149,8 @@ export default function AdminDashboardPage() {
           </Link>
         </div>
 
-        {/* Total Blogs */}
-        <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
+        {/* Total Blogs (DIV 3) */}
+        <div className="admin-kpi-card bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Published Blogs</span>
             <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
@@ -173,8 +173,8 @@ export default function AdminDashboardPage() {
           </Link>
         </div>
 
-        {/* Company Projects */}
-        <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
+        {/* Company Projects (DIV 4) */}
+        <div className="admin-kpi-card bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Jobs & Projects</span>
             <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
@@ -199,8 +199,8 @@ export default function AdminDashboardPage() {
           </a>
         </div>
 
-        {/* WhatsApp CRM Status */}
-        <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
+        {/* WhatsApp CRM Status (DIV 5) */}
+        <div className="admin-kpi-card bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:shadow-md transition">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Outreach</span>
             <div className="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center">
@@ -224,11 +224,11 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Grid: Recent Leads & Recent Blogs */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Grid: Recent Leads & Recent Blogs (DIVS 6, 7) */}
+      <div className="admin-div-dual-grid">
         
-        {/* Recent Inquiries Card */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs flex flex-col justify-between">
+        {/* Recent Inquiries Card (DIV 6) */}
+        <div className="admin-activity-card bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div className="flex items-center gap-2.5">

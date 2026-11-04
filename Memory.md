@@ -133,6 +133,19 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
   - **Leads & CRM (`/admin/leads`)**: Full CRM with search, source filtering, CSV export, and 1-click WhatsApp messaging (`https://wa.me/91...`).
   - **Blog Control Desk (`/admin/blogs`)**: Full CRUD publishing system (Create, Edit, Delete, Draft/Publish toggling, image presets, tags, reading time, and preview). Backed by REST API (`/api/blogs`) and structured `data/blogs.json`.
 
+### O. Admin Overview Full-Screen Centering & 7-Div Multi-Column Grid
+- **Location**: `app/globals.css`, `app/admin/layout.tsx`, `app/admin/page.tsx`, `app/admin/leads/page.tsx`, `app/admin/blogs/page.tsx`.
+- **Details**:
+  - The left sidebar is kept 100% intact as requested ("sidebar is perfect no changes require").
+  - Fixed issue where the 7 dashboard divs stacked in a single narrow column on the left with a massive blank space on the right.
+  - Added dedicated classes in `app/globals.css`:
+    - `.admin-main-container`: Full-width flex container with `align-items: center` to ensure true centering across all screen resolutions.
+    - `.admin-content-inner`: Auto-margined (`margin: 0 auto`), `width: 100% !important; max-width: 1600px !important;` container used across `/admin`, `/admin/leads`, and `/admin/blogs`.
+    - `.admin-div-banner`: Stretches the top command hub banner across 100% width.
+    - `.admin-div-kpi-grid`: 4-column responsive grid on desktop (`min-width: 1100px: repeat(4, 1fr)`, 2-column on tablet `min-width: 640px: repeat(2, 1fr)`, single-column on mobile) for Divs 2–5.
+    - `.admin-div-dual-grid`: 2-column responsive grid (`min-width: 1024px: repeat(2, 1fr)`) for Divs 6–7 (Inquiries and Blog Control cards).
+  - All 7 divs now stretch to fill the full desktop screen smoothly and remain centered.
+
 ---
 
 ## 5. Working Rules for Future Tasks

@@ -44,9 +44,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col lg:flex-row font-sans text-slate-800" style={{ fontFamily: "Poppins, sans-serif" }}>
+    <div className="admin-page-wrapper">
       {/* Mobile Top App Bar */}
-      <div className="lg:hidden bg-slate-900 text-white px-4 py-3.5 flex items-center justify-between border-b border-slate-800 sticky top-0 z-40 shadow-md">
+      <div className="admin-mobile-top-bar">
         <Link href="/admin" className="flex items-center gap-2.5">
           <img src="/favicon.png" alt="DLC Logo" className="w-8 h-8 rounded-lg bg-white p-1" />
           <div>
@@ -67,8 +67,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Sidebar for Desktop */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-slate-900 text-white flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-screen lg:sticky lg:top-0 ${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        className={`admin-desktop-sidebar ${
+          mobileMenuOpen ? "!translate-x-0 !left-0" : "max-lg:-translate-x-full"
         }`}
       >
         <div className="p-6">
@@ -181,7 +181,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto">
+      <main className="admin-main-container">
         {children}
       </main>
     </div>

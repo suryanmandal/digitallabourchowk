@@ -730,3 +730,164 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   object-fit: cover !important;
 }
 
+/* ========================================================
+   ADMIN DASHBOARD FULL-SCREEN RESPONSIVE LAYOUT & CENTERING
+   ======================================================== */
+.admin-page-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  background-color: #f8fafc !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+@media (max-width: 1023px) {
+  .admin-page-wrapper {
+    flex-direction: column !important;
+  }
+}
+
+.admin-mobile-top-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.875rem 1.25rem !important;
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid #1e293b !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 40 !important;
+  width: 100% !important;
+}
+
+@media (min-width: 1024px) {
+  .admin-mobile-top-bar {
+    display: none !important;
+  }
+}
+
+.admin-desktop-sidebar {
+  width: 18rem !important; /* 288px */
+  flex-shrink: 0 !important;
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  border-right: 1px solid #1e293b !important;
+  z-index: 50 !important;
+}
+
+@media (min-width: 1024px) {
+  .admin-desktop-sidebar {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .admin-desktop-sidebar {
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    height: 100% !important;
+    transition: transform 0.3s ease-in-out !important;
+  }
+}
+
+.admin-main-container {
+  flex: 1 1 0% !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background-color: #f8fafc !important;
+  overflow-y: auto !important;
+  min-height: 100vh !important;
+}
+
+.admin-content-inner {
+  width: 100% !important;
+  max-width: 1600px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 2rem 1.5rem 4rem 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 768px) {
+  .admin-content-inner {
+    padding: 2.5rem 2.5rem 4rem 2.5rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .admin-content-inner {
+    padding: 3rem 4rem 5rem 4rem !important;
+  }
+}
+
+/* Div 1: Banner */
+.admin-div-banner {
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Divs 2-5: KPI Grid */
+.admin-div-kpi-grid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 640px) {
+  .admin-div-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  .admin-div-kpi-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+.admin-kpi-card {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Divs 6-7: Dual Grid */
+.admin-div-dual-grid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 1024px) {
+  .admin-div-dual-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+.admin-activity-card {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+

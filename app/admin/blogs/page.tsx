@@ -256,7 +256,7 @@ export default function AdminBlogsPage() {
   });
 
   return (
-    <div className="p-4 sm:p-6 lg:p-10 max-w-7xl mx-auto space-y-8 font-sans">
+    <div className="admin-content-inner">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-200 gap-4">
         <div>

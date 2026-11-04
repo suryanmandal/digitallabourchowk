@@ -118,6 +118,10 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
 - **Location**: `public/raw_pages/home.html` & `public/home_body.html`.
 - **Fix**: Restored `elementor-element-baa0256` container. Enforced centering on both outer wrapper and inner container (`display: flex; justify-content: center; align-items: center; width: 100%; margin: 2.5rem auto 1.5rem auto;`). Inside the card, centered all headings and paragraphs (`text-center`, `max-w-lg mx-auto`), stacked the "Contact Support" button directly below the text (`flex justify-center w-full mt-2`), and standardized responsiveness (`w-full max-w-2xl sm:max-w-3xl`) across desktop and phone views.
 
+### L. Preserved Heading Boldness & Subtitle Styling
+- **Location**: `public/raw_pages/home.html` & `public/home_body.html`.
+- **Details**: Preserved user's custom inline styles (`font-size: 1em !important; font-weight: inherit !important; vertical-align: baseline;`) on colored heading spans to maintain uniform text boldness across all display sizes. Synchronized across both files and committed (`commit 0b65c3a`).
+
 ---
 
 ## 5. Working Rules for Future Tasks

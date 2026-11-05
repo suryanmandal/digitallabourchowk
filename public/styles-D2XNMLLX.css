@@ -6514,7 +6514,7 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + calc(var(--bs-border-
 
 * { font-family: Poppins, sans-serif; font-weight: 400; box-sizing: border-box; line-height: 1.75; cursor: default; font-size: 0.95rem; }
 
-html, body { margin: 0px; padding: 0px; position: relative; background-color: rgb(241, 244, 249); }
+html, body { margin: 0px; padding: 0px; position: relative; background-color: #ffffff; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, strong { font-weight: 700; }
 

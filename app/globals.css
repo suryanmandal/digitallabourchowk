@@ -426,6 +426,7 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   position: relative !important;
   width: 100% !important;
   overflow: hidden !important;
+
 }
 
 .elementor-element-0cc8fe6 .elementor-main-swiper {
@@ -577,6 +578,7 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   border-radius: 4px !important;
   background: #0C59D4 !important;
 }
+
 
 /* ==========================================================================
    Hero 3 Action Buttons: Equal Sizing & Alignment
@@ -1199,6 +1201,34 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   width: 22px !important;
   border-radius: 4px !important;
 }
+
+/* ==========================================================================
+   Media Coverage / Collaboration Page: Seamless Camouflage (#ffffff)
+   Convert #f1f4f9 around carousels to pure #ffffff
+   ========================================================================== */
+.site-content,
+#content,
+.post-2232,
+.elementor-2232,
+.elementor-2232 .elementor-element.elementor-element-e14b615,
+.elementor-2232 .elementor-element.elementor-element-94cfa29,
+.elementor-2232 .elementor-element.elementor-element-960f86a,
+.elementor-2232 .elementor-element.elementor-element-667e92c,
+.elementor-2232 .elementor-element.elementor-element-0cb0c4c,
+.elementor-2232 .elementor-element.elementor-element-bac0b25,
+.elementor-2232 .elementor-element.elementor-element-c49d41d,
+.elementor-2232 .elementor-element.elementor-element-60aadc0,
+.elementor-2232 .elementor-element.elementor-element-cc13ff1 {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.elementor-2232 .elementor-widget-media-carousel,
+.elementor-2232 .elementor-swiper,
+.elementor-2232 .elementor-main-swiper {
+  background-color: #ffffff !important;
+}
+
 
 
 

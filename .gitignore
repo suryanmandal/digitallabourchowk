@@ -8,6 +8,7 @@ node_modules/
 # Legacy Archive
 _archive/
 new pages/
+for-collaboration-images/
 
 # OS / Editor
 .DS_Store

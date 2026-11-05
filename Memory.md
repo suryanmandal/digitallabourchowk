@@ -169,6 +169,18 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
   - **Onboarding Redirect**: Direct 307 redirect configured in `next.config.ts` and `app/onboarding/page.tsx`, plus SPA route listener in `SiteInitializer.tsx`, routing all "Join Us" buttons and `/onboarding` paths to `https://onboarding.digitallabourchowk.com/login`.
   - **Google Sheet Integration**: Linked official company spreadsheet (`https://docs.google.com/spreadsheets/d/1xK1XkGM1iNrHPjqhWv7k0Eec3qERIMOO_StaCqcYw1Y/edit?gid=0#gid=0`). Added quick-access button in `/admin/leads`, sidebar navigation portal link under "Company Portals", and documented Apps Script webhook for real-time lead auto-append.
 
+### R. Media & Coverage (/for-collaboration) 4 Carousels Restoration & Standardization
+- **Location**: `public/raw_pages/media-coverage.html`, `app/globals.css`, `public/images/for-collaboration/`, `scripts/`
+- **Details**:
+  - Replaced all outdated/dummy carousel images with user-supplied screenshots across all 4 carousels:
+    1. **Print Media Coverage**: 10 slides (1–5 with verified external links: Panchjanya, The Hindu Business Line, Live Hindustan, Dainik Bhaskar, Local Samosa; 6–10 without links: Dainik Jagran, Ganadesh, Morning India, Prabhat Khabar, Sahara).
+    2. **T.V Media Coverage**: 11 slides (all with verified links: Republic TV, Navbharat Times, Bloomberg, ETV Bharat, Channel IM, YourStory, Sansad TV, Amazon miniTV / The Pitchers, The Better India, Jagran Business, CNBC TV18).
+    3. **Top Recognitions & Achievements**: 8 widescreen 16:9 award certificate slides (350px tall, 2 slides/view desktop, 1 mobile, with navigation arrows and white container card).
+    4. **Collaboration That Builds India**: 15 partner logos (5 slides/view desktop, 3 tablet, 2 mobile, 145px height, with navigation arrows and clean padding).
+  - All old images that were present only in the 4 carousels were completely purged from the markup.
+  - Generated modern WebP assets + optimized PNGs for fast web delivery and crisp scaling.
+  - Standardized `.dlc-media-card-link`, `.dlc-media-card-nolink`, `.dlc-recognition-slide-card`, and `.dlc-collab-slide-card` with white background cards, clean borders, box-shadows, and hover feedback.
+
 ---
 
 ## 5. Working Rules for Future Tasks

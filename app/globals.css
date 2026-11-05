@@ -978,14 +978,93 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
 
 /* ==========================================================================
    MEDIA & COVERAGE (/for-collaboration) CAROUSELS
+   - Desktop: 3 images in Print, TV & Recognitions; 5 images in Collaboration
+   - Mobile: 1 image at a time with visible left/right arrows for manual shifting
+   - Auto swiping continuously enabled
    ========================================================================== */
 
-/* 1 & 2. Print Media & TV Media Carousels */
+/* Top Section: Side-by-side Enclosed Cards for Print & TV Media */
+.elementor-2232 .elementor-element.elementor-element-94cfa29 {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+}
+
+.elementor-2232 .elementor-element.elementor-element-94cfa29 > .e-con-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 24px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 900px) {
+  .elementor-2232 .elementor-element.elementor-element-94cfa29 > .e-con-inner {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+}
+
+.elementor-2232 .elementor-element.elementor-element-960f86a,
+.elementor-2232 .elementor-element.elementor-element-667e92c {
+  flex: 1 1 0% !important;
+  width: calc(50% - 12px) !important;
+  min-width: 0 !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #d5dbe1 !important;
+  border-radius: 20px !important;
+  padding: 22px 20px 16px 20px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@media (max-width: 900px) {
+  .elementor-2232 .elementor-element.elementor-element-960f86a,
+  .elementor-2232 .elementor-element.elementor-element-667e92c {
+    width: 100% !important;
+    padding: 18px 14px 12px 14px !important;
+  }
+}
+
+.elementor-2232 .elementor-element.elementor-element-133fcb8,
+.elementor-2232 .elementor-element.elementor-element-7afad40 {
+  margin-bottom: 12px !important;
+}
+
+.elementor-2232 .elementor-element.elementor-element-133fcb8 p,
+.elementor-2232 .elementor-element.elementor-element-7afad40 p {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  text-align: center !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* 1 & 2. Print Media & TV Media Swipers */
 .elementor-element-0cc8fe6 .elementor-main-swiper,
 .elementor-element-8fa8043 .elementor-main-swiper {
-  height: 220px !important;
-  padding: 12px 6px 36px 6px !important;
+  height: 95px !important;
+  padding: 6px 4px !important;
   box-sizing: border-box !important;
+  position: relative !important;
+}
+
+@media (max-width: 767px) {
+  .elementor-element-0cc8fe6 .elementor-main-swiper,
+  .elementor-element-8fa8043 .elementor-main-swiper {
+    height: 90px !important;
+    padding: 6px 36px !important;
+  }
 }
 
 .elementor-element-0cc8fe6 .swiper-slide,
@@ -1005,63 +1084,62 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   justify-content: center !important;
   width: 100% !important;
   height: 100% !important;
-  min-height: 165px !important;
-  background-color: #ffffff !important;
-  border-radius: 14px !important;
-  padding: 14px 18px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 4px 8px !important;
   box-sizing: border-box !important;
-  border: 1.5px solid #E2E8F0 !important;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
-  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.dlc-media-card-link {
   cursor: pointer !important;
-  text-decoration: none !important;
-}
-
-.dlc-media-card-link:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 28px rgba(12, 89, 212, 0.16) !important;
-  border-color: #0C59D4 !important;
+  transition: transform 0.25s ease !important;
 }
 
 .dlc-media-card-nolink {
   cursor: default !important;
 }
 
+.dlc-media-card-link:hover {
+  transform: scale(1.06) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .dlc-media-logo-card {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 120px !important;
+  height: 65px !important;
   background-size: contain !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
-  transition: transform 0.28s ease !important;
+  transition: transform 0.25s ease !important;
 }
 
-.dlc-media-card-link:hover .dlc-media-logo-card {
-  transform: scale(1.04) !important;
-}
-
-/* 3. Top Recognitions and Achievements (16:9 Widescreen Presentation) */
-.elementor-element-3e8d1fd .elementor-main-swiper {
-  height: 350px !important;
-  padding: 10px 8px 38px 8px !important;
+/* 3. Top Recognitions and Achievements (3 items side by side on desktop, 1 on mobile) */
+.elementor-element-bac0b25 {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 16px !important;
   box-sizing: border-box !important;
 }
 
-@media (max-width: 1024px) {
+.elementor-element-3e8d1fd .elementor-main-swiper {
+  height: 250px !important;
+  padding: 6px 0 10px 0 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+@media (max-width: 1023px) {
   .elementor-element-3e8d1fd .elementor-main-swiper {
-    height: 300px !important;
+    height: 230px !important;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .elementor-element-3e8d1fd .elementor-main-swiper {
-    height: 235px !important;
+    height: 215px !important;
+    padding: 6px 40px 10px 40px !important;
   }
 }
 
@@ -1078,12 +1156,12 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   width: 100% !important;
   height: 100% !important;
   background-color: #ffffff !important;
-  border-radius: 16px !important;
-  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.28s ease !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1092,7 +1170,7 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
 
 .dlc-recognition-slide-card:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
 .dlc-recognition-image {
@@ -1101,19 +1179,29 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   background-size: contain !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
-  border-radius: 12px !important;
 }
 
-/* 4. Collaboration Carousel (Partner Logos) */
-.elementor-element-d426b04 .elementor-main-swiper {
-  height: 145px !important;
-  padding: 8px 6px 14px 6px !important;
+/* 4. Collaboration Carousel (5 items side by side on desktop, 1 on mobile) */
+.elementor-element-60aadc0 {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 16px !important;
   box-sizing: border-box !important;
 }
 
-@media (max-width: 640px) {
+.elementor-element-d426b04 .elementor-main-swiper {
+  height: 110px !important;
+  padding: 6px 0 10px 0 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+@media (max-width: 767px) {
   .elementor-element-d426b04 .elementor-main-swiper {
-    height: 115px !important;
+    height: 100px !important;
+    padding: 6px 40px 10px 40px !important;
   }
 }
 
@@ -1129,76 +1217,129 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
 .dlc-collab-slide-card {
   width: 100% !important;
   height: 100% !important;
-  min-height: 105px !important;
-  background-color: #ffffff !important;
-  border-radius: 14px !important;
-  padding: 12px 20px !important;
-  box-sizing: border-box !important;
-  border: 1.5px solid #E2E8F0 !important;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05) !important;
-  transition: all 0.25s ease !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  padding: 6px 14px !important;
+  box-sizing: border-box !important;
+  transition: transform 0.25s ease !important;
 }
 
 .dlc-collab-slide-card:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
-  border-color: #CBD5E1 !important;
+  transform: scale(1.08) !important;
 }
 
 .dlc-collab-image {
   width: 100% !important;
-  height: 100% !important;
+  height: 65px !important;
   background-size: contain !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
 }
 
-/* Carousel Arrows & Pagination Styling */
-.elementor-widget-media-carousel .elementor-swiper-button {
+/* Navigation Arrows: All 4 Carousels on Desktop & Mobile */
+.elementor-2232 .elementor-swiper-button {
+  width: 36px !important;
+  height: 36px !important;
   background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
   border-radius: 50% !important;
-  width: 44px !important;
-  height: 44px !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 25 !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   transition: all 0.2s ease !important;
-  border: 1px solid #E2E8F0 !important;
+  opacity: 0.9 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button:hover {
+.elementor-2232 .elementor-swiper-button:hover {
   background: #0C59D4 !important;
-  color: #ffffff !important;
-  transform: scale(1.08) !important;
+  border-color: #0C59D4 !important;
+  opacity: 1 !important;
+  transform: translateY(-50%) scale(1.08) !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button svg {
-  width: 18px !important;
-  height: 18px !important;
-  fill: #0F172A !important;
+.elementor-2232 .elementor-swiper-button svg {
+  width: 14px !important;
+  height: 14px !important;
+  fill: #1e293b !important;
+  display: block !important;
   transition: fill 0.2s ease !important;
 }
 
-.elementor-widget-media-carousel .elementor-swiper-button:hover svg {
+.elementor-2232 .elementor-swiper-button:hover svg {
   fill: #ffffff !important;
 }
 
-.elementor-widget-media-carousel .swiper-pagination-bullet {
+/* Arrow Positioning on Desktop */
+@media (min-width: 768px) {
+  .elementor-element-0cc8fe6 .elementor-swiper-button-prev,
+  .elementor-element-8fa8043 .elementor-swiper-button-prev {
+    left: 2px !important;
+  }
+  .elementor-element-0cc8fe6 .elementor-swiper-button-next,
+  .elementor-element-8fa8043 .elementor-swiper-button-next {
+    right: 2px !important;
+  }
+
+  .elementor-element-3e8d1fd .elementor-swiper-button-prev,
+  .elementor-element-d426b04 .elementor-swiper-button-prev {
+    left: -16px !important;
+  }
+  .elementor-element-3e8d1fd .elementor-swiper-button-next,
+  .elementor-element-d426b04 .elementor-swiper-button-next {
+    right: -16px !important;
+  }
+}
+
+/* Mobile Responsiveness: 1 image at a time with prominent left & right arrows */
+@media (max-width: 767px) {
+  .elementor-2232 .elementor-swiper-button {
+    width: 36px !important;
+    height: 36px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #0C59D4 !important;
+    box-shadow: 0 3px 10px rgba(12, 89, 212, 0.2) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .elementor-2232 .elementor-swiper-button svg {
+    fill: #0C59D4 !important;
+    width: 13px !important;
+    height: 13px !important;
+  }
+  .elementor-2232 .elementor-swiper-button-prev {
+    left: 2px !important;
+  }
+  .elementor-2232 .elementor-swiper-button-next {
+    right: 2px !important;
+  }
+}
+
+/* Bullet Pagination */
+.elementor-2232 .swiper-pagination-bullet {
   background: #94A3B8 !important;
   opacity: 0.5 !important;
-  width: 8px !important;
-  height: 8px !important;
+  width: 7px !important;
+  height: 7px !important;
   transition: all 0.2s ease !important;
 }
 
-.elementor-widget-media-carousel .swiper-pagination-bullet-active {
+.elementor-2232 .swiper-pagination-bullet-active {
   background: #0C59D4 !important;
   opacity: 1 !important;
-  width: 22px !important;
+  width: 20px !important;
   border-radius: 4px !important;
 }
 
@@ -1228,8 +1369,4 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
 .elementor-2232 .elementor-main-swiper {
   background-color: #ffffff !important;
 }
-
-
-
-
 

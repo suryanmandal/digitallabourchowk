@@ -684,13 +684,18 @@ export default function SiteInitializer() {
             } catch (e) {}
           }
 
-          const defaultSlides = widget.getAttribute("data-id") === "d426b04" ? 5 : 3;
-          const desktopSlides = Number(settings.slides_per_view) || defaultSlides;
-          const tabletSlides = desktopSlides >= 5 ? 3 : (desktopSlides >= 2 ? 2 : 1);
-          const mobileSlides = desktopSlides >= 5 ? 2 : 1;
+          const widgetId = widget.getAttribute("data-id");
+          const isCollaboration = widgetId === "d426b04";
+          const isMediaPageCarousel = ["0cc8fe6", "8fa8043", "3e8d1fd", "d426b04"].includes(widgetId || "");
 
-          const rawSpacing = settings.space_between?.size !== undefined ? Number(settings.space_between.size) : 20;
-          const mobileSpacing = settings.space_between_mobile?.size !== undefined ? Number(settings.space_between_mobile.size) : 12;
+          // Desktop slides: Collaboration = 5, all other carousels = 3
+          const desktopSlides = isCollaboration ? 5 : (isMediaPageCarousel ? 3 : (Number(settings.slides_per_view) || 3));
+          const tabletSlides = isCollaboration ? 3 : 2;
+          // Mobile responses: exactly 1 slide at a time for all carousels
+          const mobileSlides = 1;
+
+          const rawSpacing = isCollaboration ? 24 : 16;
+          const mobileSpacing = 10;
 
           const prevBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-prev");
           const nextBtn = widget.querySelector<HTMLElement>(".elementor-swiper-button-next");
@@ -699,21 +704,21 @@ export default function SiteInitializer() {
           const swiperOptions: any = {
             slidesPerView: desktopSlides,
             spaceBetween: rawSpacing,
-            loop: settings.loop !== "no",
-            autoplay: settings.autoplay === "no" ? false : {
-              delay: Number(settings.autoplay_speed) || 4500,
+            loop: true,
+            autoplay: {
+              delay: isCollaboration ? 2500 : 3500,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             },
-            speed: Number(settings.speed) || 600,
+            speed: 600,
             breakpoints: {
               320: {
-                slidesPerView: mobileSlides,
+                slidesPerView: 1,
                 spaceBetween: mobileSpacing,
               },
-              768: {
+              640: {
                 slidesPerView: tabletSlides,
-                spaceBetween: rawSpacing,
+                spaceBetween: 14,
               },
               1024: {
                 slidesPerView: desktopSlides,
@@ -737,6 +742,25 @@ export default function SiteInitializer() {
           }
 
           const instance = new window.Swiper(swiperEl, swiperOptions);
+
+          // Direct explicit manual shift handlers for guaranteed mobile touch responsiveness
+          if (prevBtn && !prevBtn.hasAttribute("data-manual-bound")) {
+            prevBtn.setAttribute("data-manual-bound", "true");
+            prevBtn.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              instance.slidePrev();
+            });
+          }
+          if (nextBtn && !nextBtn.hasAttribute("data-manual-bound")) {
+            nextBtn.setAttribute("data-manual-bound", "true");
+            nextBtn.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              instance.slideNext();
+            });
+          }
+
           swiperInstances.push(instance);
         } catch (err) {
           console.error("Carousel Swiper init error:", err);

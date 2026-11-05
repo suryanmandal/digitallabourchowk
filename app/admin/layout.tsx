@@ -15,7 +15,8 @@ import {
   Briefcase,
   ChevronRight,
   TrendingUp,
-  Sparkles
+  Sparkles,
+  Table2
 } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -129,6 +130,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
               Company Portals
             </div>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1xK1XkGM1iNrHPjqhWv7k0Eec3qERIMOO_StaCqcYw1Y/edit?gid=0#gid=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition"
+            >
+              <div className="flex items-center gap-3">
+                <Table2 className="w-4 h-4 text-emerald-400" />
+                <span>Leads Google Sheet</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
+            </a>
             <a
               href="https://jobs.dlc.org.in/projects"
               target="_blank"

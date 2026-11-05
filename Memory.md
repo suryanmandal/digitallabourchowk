@@ -38,7 +38,12 @@
 | **`/contact`** | [`app/contact/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/contact/page.tsx) | [`public/raw_pages/contact.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/contact.html) | Contact Form (`#fluentform_8`), Google Maps iframe, Office details, FAQ accordion. |
 | **`/for-collaboration`** | [`app/for-collaboration/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/for-collaboration/page.tsx) | [`public/raw_pages/media-coverage.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/media-coverage.html) | Media coverage carousels, Press releases, Awards gallery. |
 | **`/blogs`** | [`app/blogs/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/blogs/page.tsx) | [`public/raw_pages/blogs.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/blogs.html) | Industry blog articles, Guides, Construction hiring insights. |
-| **`/onboarding`** | [`app/onboarding/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/onboarding/page.tsx) | [`public/raw_pages/onboarding.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/onboarding.html) | Multi-role user registration / login portal. |
+| **`/terms-and-conditions`** | [`app/terms-and-conditions/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/terms-and-conditions/page.tsx) | [`public/raw_pages/terms-and-conditions.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/terms-and-conditions.html) | Restored Legal Terms & Conditions policy page. |
+| **`/privacy-policy`** | [`app/privacy-policy/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/privacy-policy/page.tsx) | [`public/raw_pages/privacy-policy.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/privacy-policy.html) | Restored Privacy Policy page. |
+| **`/cancellation-policy`** | [`app/cancellation-policy/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/cancellation-policy/page.tsx) | [`public/raw_pages/cancellation-policy.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/cancellation-policy.html) | Restored Cancellation Policy page. |
+| **`/refund-policy`** | [`app/refund-policy/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/refund-policy/page.tsx) | [`public/raw_pages/refund-policy.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/refund-policy.html) | Restored Refund Policy page. |
+| **`/disclaimer`** | [`app/disclaimer/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/disclaimer/page.tsx) | [`public/raw_pages/disclaimer.html`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/public/raw_pages/disclaimer.html) | Restored Legal Disclaimer page. |
+| **`/onboarding`** | [`app/onboarding/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/onboarding/page.tsx) | External Redirect | HTTP 307 + Client Redirect directly to `https://onboarding.digitallabourchowk.com/login`. |
 | **`/admin/leads`** | [`app/admin/leads/page.tsx`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/admin/leads/page.tsx) | N/A (React Client Component) | Real-time CRM Dashboard: view leads, search filter, 1-click CSV download. |
 | **`/api/leads`** | [`app/api/leads/route.ts`](file:///Users/suryanarayanmandal/Company%20Project/dlc_website/app/api/leads/route.ts) | N/A (Next.js REST Route) | `POST` / `GET` leads; writes to `leads.json` and optionally forwards to Google Sheets webhook. |
 
@@ -152,6 +157,17 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
   - **Overlap Fix**: Replaced the absolute floating `+91` prefix (which collided with typed numbers due to WordPress/Elementor global input padding overrides) with a structured Flexbox input group (`.dlc-phone-input-group`). Placed `🇮🇳 +91` in a dedicated `.dlc-phone-prefix` container alongside an independent `.dlc-phone-input-field`.
   - **Client-Side Exception Fix**: Restricted `SiteInitializer.tsx` form interceptor so it completely ignores React pages (`/onboarding`, `/admin`) and specific React forms (`#dlcOnboardingForm`). Previously, `SiteInitializer` attached a broad `form:not(#projectApplyForm)` submit listener that directly mutated `submitBtn.innerText`, corrupting React's Virtual DOM during role/OTP re-renders and crashing the page with a client-side exception.
   - **Mobile Paste Handling**: Added smart phone number parsing in `handlePhoneChange` to automatically strip leading `91` or `0` when users paste formatted numbers (`+91 ...`), guaranteeing clean 10-digit input.
+
+### Q. Restoration of Footer Policy Pages, External Onboarding Redirect, and Google Sheets CRM
+- **Location**:
+  - `app/terms-and-conditions/`, `app/privacy-policy/`, `app/cancellation-policy/`, `app/refund-policy/`, `app/disclaimer/`
+  - `public/raw_pages/` (5 sanitized policy pages)
+  - `next.config.ts`, `app/onboarding/page.tsx`, `components/SiteInitializer.tsx`
+  - `app/admin/layout.tsx`, `app/admin/leads/page.tsx`, `app/api/leads/route.ts`
+- **Details**:
+  - **Footer Policy Pages (Fixed 404s)**: Extracted content from `./new pages/` exports, sanitized out WordPress `<head>` and duplicate CSS files, and rendered standard responsive pages with site headers and footers matching `Poppins, sans-serif`.
+  - **Onboarding Redirect**: Direct 307 redirect configured in `next.config.ts` and `app/onboarding/page.tsx`, plus SPA route listener in `SiteInitializer.tsx`, routing all "Join Us" buttons and `/onboarding` paths to `https://onboarding.digitallabourchowk.com/login`.
+  - **Google Sheet Integration**: Linked official company spreadsheet (`https://docs.google.com/spreadsheets/d/1xK1XkGM1iNrHPjqhWv7k0Eec3qERIMOO_StaCqcYw1Y/edit?gid=0#gid=0`). Added quick-access button in `/admin/leads`, sidebar navigation portal link under "Company Portals", and documented Apps Script webhook for real-time lead auto-append.
 
 ---
 

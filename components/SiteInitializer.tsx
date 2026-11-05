@@ -67,6 +67,12 @@ function normalizeInternalPath(href: string): string | null {
     }
     return null;
   }
+  if (clean === "/onboarding") {
+    if (typeof window !== "undefined") {
+      window.location.href = "https://onboarding.digitallabourchowk.com/login";
+    }
+    return null;
+  }
   if (clean === "/about") return "/about-us";
   if (clean === "/hire-construction-workers-business") return "/business";
   if (clean === "/hire-skilled-construction-workers-delhi-ncr") return "/business";

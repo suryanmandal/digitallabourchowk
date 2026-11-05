@@ -27,7 +27,13 @@ function saveLeads(leads: any[]) {
 
 export async function GET() {
   const leads = getLeads();
-  return NextResponse.json({ success: true, count: leads.length, leads });
+  return NextResponse.json({
+    success: true,
+    count: leads.length,
+    leads,
+    googleSheetUrl: "https://docs.google.com/spreadsheets/d/1xK1XkGM1iNrHPjqhWv7k0Eec3qERIMOO_StaCqcYw1Y/edit?gid=0#gid=0",
+    webhookConfigured: Boolean(process.env.GOOGLE_SHEETS_WEBHOOK_URL || process.env.LEADS_WEBHOOK_URL),
+  });
 }
 
 export async function POST(request: Request) {

@@ -19,6 +19,16 @@ const nextConfig: NextConfig = {
         destination: "https://jobs.dlc.org.in/projects",
         permanent: false,
       },
+      {
+        source: "/onboarding",
+        destination: "https://onboarding.digitallabourchowk.com/login",
+        permanent: false,
+      },
+      {
+        source: "/onboarding/:path*",
+        destination: "https://onboarding.digitallabourchowk.com/login",
+        permanent: false,
+      },
     ];
   },
   async rewrites() {

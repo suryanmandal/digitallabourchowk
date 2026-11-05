@@ -15,7 +15,9 @@ import {
   MessageSquare,
   MessageCircle,
   Filter,
-  ArrowUpRight
+  ArrowUpRight,
+  Table2,
+  ExternalLink
 } from "lucide-react";
 
 interface Lead {
@@ -121,6 +123,16 @@ export default function AdminLeadsPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="https://docs.google.com/spreadsheets/d/1xK1XkGM1iNrHPjqhWv7k0Eec3qERIMOO_StaCqcYw1Y/edit?gid=0#gid=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 text-xs sm:text-sm font-bold shadow-xs transition active:scale-95 cursor-pointer"
+          >
+            <Table2 className="w-4 h-4 text-emerald-600" />
+            <span>Open Google Sheet</span>
+            <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+          </a>
           <button
             onClick={downloadCSV}
             disabled={leads.length === 0}

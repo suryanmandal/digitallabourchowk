@@ -890,4 +890,89 @@ i[class*="eicon-"], .eicon, [class*="eicon"] {
   box-sizing: border-box !important;
 }
 
+/* ========================================================
+   ONBOARDING FORM & INPUT FIXES (PREVENT TEXT OVERLAPPING)
+   ======================================================== */
+.dlc-phone-input-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  background-color: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 0.875rem !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+}
+
+.dlc-phone-input-group:focus-within {
+  border-color: #0C59D4 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(12, 89, 212, 0.15) !important;
+}
+
+.dlc-phone-prefix {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.375rem !important;
+  padding: 0 0.875rem !important;
+  height: 48px !important;
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  border-right: 1.5px solid #e2e8f0 !important;
+  user-select: none !important;
+  flex-shrink: 0 !important;
+}
+
+.dlc-phone-input-field {
+  flex: 1 1 0% !important;
+  width: 100% !important;
+  height: 48px !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  padding: 0 0.875rem !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: none !important;
+}
+
+.dlc-phone-input-field::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+}
+
+.dlc-otp-input-field {
+  width: 100% !important;
+  height: 50px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 0.875rem !important;
+  background-color: #f8fafc !important;
+  padding: 0 1rem !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.35em !important;
+  text-align: center !important;
+  color: #0f172a !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.dlc-otp-input-field:focus {
+  border-color: #0C59D4 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(12, 89, 212, 0.15) !important;
+}
+
+
 

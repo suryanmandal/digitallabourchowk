@@ -11,6 +11,16 @@ export default function OnboardingPage() {
   const [otp, setOtp] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value.replace(/\D/g, "");
+    if (val.length === 12 && val.startsWith("91")) {
+      val = val.slice(2);
+    } else if (val.length === 11 && val.startsWith("0")) {
+      val = val.slice(1);
+    }
+    setPhone(val.slice(0, 10));
+  };
+
   const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
     if (phone.length === 10) {
@@ -99,23 +109,28 @@ export default function OnboardingPage() {
               </Link>
             </div>
           ) : !otpSent ? (
-            <form onSubmit={handleSendOtp} className="space-y-4">
+            <form id="dlcOnboardingForm" onSubmit={handleSendOtp} noValidate className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
+                <label htmlFor="onboardingPhone" className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wider">
                   Mobile Number
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm font-semibold">
-                    +91
+                <div className="dlc-phone-input-group">
+                  <div className="dlc-phone-prefix">
+                    <span className="text-base leading-none">🇮🇳</span>
+                    <span>+91</span>
                   </div>
                   <input
                     type="tel"
+                    id="onboardingPhone"
+                    name="phone"
+                    inputMode="numeric"
+                    autoComplete="tel-national"
                     required
                     maxLength={10}
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                    onChange={handlePhoneChange}
                     placeholder="Enter 10-digit number"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-2.5 text-sm font-medium focus:border-blue-500 focus:outline-none"
+                    className="dlc-phone-input-field"
                   />
                 </div>
               </div>
@@ -123,44 +138,48 @@ export default function OnboardingPage() {
               <button
                 type="submit"
                 disabled={phone.length !== 10}
-                className="w-full py-3 px-4 rounded-xl bg-[#0C59D4] hover:bg-blue-700 text-white font-bold text-sm shadow-md transition disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-4 rounded-xl bg-[#0C59D4] hover:bg-blue-700 text-white font-bold text-sm shadow-md transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 <span>Send OTP Verification</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
           ) : (
-            <form onSubmit={handleVerify} className="space-y-4">
+            <form id="dlcVerifyForm" onSubmit={handleVerify} noValidate className="space-y-4">
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <div className="flex items-center justify-between mb-2">
+                  <label htmlFor="onboardingOtp" className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                     Enter 4-Digit OTP
                   </label>
                   <button
                     type="button"
-                    onClick={() => setOtpSent(false)}
-                    className="text-[11px] font-bold text-blue-600 hover:underline"
+                    onClick={() => { setOtpSent(false); setOtp(""); }}
+                    className="text-[11px] font-bold text-blue-600 hover:underline cursor-pointer"
                   >
                     Change Number
                   </button>
                 </div>
                 <input
                   type="text"
+                  id="onboardingOtp"
+                  name="otp"
+                  inputMode="numeric"
                   required
                   maxLength={6}
                   value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  placeholder="1234"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold tracking-widest text-center focus:border-blue-500 focus:outline-none"
+                  onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                  placeholder="• • • •"
+                  className="dlc-otp-input-field"
                 />
-                <p className="text-[11px] text-slate-400 mt-1 text-center">
-                  OTP sent to +91 {phone} (Use 1234 for testing)
+                <p className="text-[12px] text-slate-500 mt-2 text-center">
+                  OTP sent to <strong>+91 {phone}</strong> (Use <strong>1234</strong> for testing)
                 </p>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2"
+                disabled={otp.length < 4}
+                className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 <span>Verify & Login</span>
                 <ShieldCheck className="w-4 h-4" />

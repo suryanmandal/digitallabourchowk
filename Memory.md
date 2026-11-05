@@ -146,6 +146,13 @@ Because serverless hosts (e.g., Vercel) have read-only lambdas, [`/api/leads/rou
     - `.admin-div-dual-grid`: 2-column responsive grid (`min-width: 1024px: repeat(2, 1fr)`) for Divs 6–7 (Inquiries and Blog Control cards).
   - All 7 divs now stretch to fill the full desktop screen smoothly and remain centered.
 
+### P. Onboarding Phone Input Overlap & Client-Side Crash Resolution
+- **Location**: `app/globals.css`, `app/onboarding/page.tsx`, `components/SiteInitializer.tsx`, `public/raw_pages/onboarding.html`.
+- **Details**:
+  - **Overlap Fix**: Replaced the absolute floating `+91` prefix (which collided with typed numbers due to WordPress/Elementor global input padding overrides) with a structured Flexbox input group (`.dlc-phone-input-group`). Placed `🇮🇳 +91` in a dedicated `.dlc-phone-prefix` container alongside an independent `.dlc-phone-input-field`.
+  - **Client-Side Exception Fix**: Restricted `SiteInitializer.tsx` form interceptor so it completely ignores React pages (`/onboarding`, `/admin`) and specific React forms (`#dlcOnboardingForm`). Previously, `SiteInitializer` attached a broad `form:not(#projectApplyForm)` submit listener that directly mutated `submitBtn.innerText`, corrupting React's Virtual DOM during role/OTP re-renders and crashing the page with a client-side exception.
+  - **Mobile Paste Handling**: Added smart phone number parsing in `handlePhoneChange` to automatically strip leading `91` or `0` when users paste formatted numbers (`+91 ...`), guaranteeing clean 10-digit input.
+
 ---
 
 ## 5. Working Rules for Future Tasks

@@ -743,11 +743,14 @@ export default function SiteInitializer() {
     const swiperTimer3 = setTimeout(initSwipers, 1200);
 
     // I. GENERAL & CONTACT FORM SUBMISSION TO /api/leads
-    const forms = document.querySelectorAll<HTMLFormElement>("form:not(#projectApplyForm)");
-    forms.forEach((form) => {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
+    // Strictly isolate to WordPress/FluentForms and never intercept React components (e.g. /onboarding, /admin)
+    if (!pathname?.startsWith("/onboarding") && !pathname?.startsWith("/admin")) {
+      const forms = document.querySelectorAll<HTMLFormElement>("#fluentform_8, form.fluentform, form.elementor-form");
+      forms.forEach((form) => {
+        if (form.id === "projectApplyForm" || form.id === "dlcOnboardingForm") return;
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
 
         // Extract names
         const name = (
@@ -869,6 +872,7 @@ export default function SiteInitializer() {
         }
       });
     });
+    }
 
     // J. STICKY HEADER CONTROLLER
     const handleScroll = () => {
